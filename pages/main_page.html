@@ -3,8 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <link rel="shortcut icon" href="../assets/img/favicon.png">
+
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="../assets/plugins/fontawesome/css/all.min.css">
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/field.css">
+
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+
+    <script src="../assets/js/html5shiv.min.js"></script>
+    <script src="../assets/js/respond.min.js"></script>
+
+    <style>
+        /* Normalize CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Navigation Bar Styles */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 1rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        .nav-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background-color: #333;
+                padding: 1rem 0;
+            }
+
+            .nav-links.active li {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+
 </head>
 <body>
+
+<!--nav bar-->
+<nav>
+    <div class="nav-brand">Next Travel PVT Ltd.</div>
+    <ul class="nav-links">
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#about_us_section">About Us</a></li>
+        <li><a href="#package_profile">Package</a></li>
+        <li><a href="#hotel_view_main_div">Hotel</a></li>
+        <li><a href="#guide_view">Guide</a></li>
+        <li><a href="#vehicle_view">Vehicle</a></li>
+        <li><a href="#">User</a></li>
+        <li><a href="#">Cart</a></li>
+    </ul>
+    <div class="nav-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+
+<script src="../assets/js/popper.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+
+<script src="../assets/js/feather.min.js"></script>
+
+<script src="../assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<script src="../assets/plugins/apexchart/apexcharts.min.js"></script>
+<script src="../assets/plugins/apexchart/chart-data.js"></script>
+
+<script src="../assets/js/script.js"></script>
+
+
+<script src="../pages/js/navigation.js"></script>
+<script src="../pages/js/employee-page.js"></script>
+<script src="../pages/js/customer-page.js"></script>
+<script src="../pages/js/supplier-page.js"></script>
+<script src="../pages/js/size-page.js"></script>
+<script src="../pages/js/field-page.js"></script>
+<script src="../pages/js/inventory-page.js"></script>
+<script src="../pages/js/order-page.js"></script>
+<script src="../pages/js/return-page.js"></script>
+<script src="../pages/js/report-page.js"></script>
+<script src="../pages/js/dashboard-page.js"></script>
+<script src="../pages/js/user-page.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+</script>
 
 </body>
 </html>
