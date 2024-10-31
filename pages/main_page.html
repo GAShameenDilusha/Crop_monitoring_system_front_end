@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../assets/css/field.css">
     <link rel="stylesheet" href="../assets/css/crop.css">
     <link rel="stylesheet" href="../assets/css/staff.css">
+    <link rel="stylesheet" href="../assets/css/vehicle.css">
 
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -848,6 +849,74 @@
 
 
 
+
+<!--Vehicle page-->
+<section id="original-vehicle-page">
+    <div class="page-wrapper" id="vehicle-page">
+        <div class="content container-fluid">
+            <div class="row">
+                <div class="col-xl-12 col-sm-12 col-12">
+                    <div class="breadcrumb-path mb-4">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item active"><img src="../assets/img/nav-vehicle.png"
+                                                                    alt="sidebar_img"></li>
+                        </ul>
+                        <h3>Vehicle</h3>
+                    </div>
+                </div>
+                <div class="col-xl-12 col-sm-12 col-12 mb-4">
+                    <div class="row">
+                        <div class="col-xl-2 col-sm-8 col-12">
+                            <label class="staff_count text-center"><span id="lbl-vehicle-total"></span> <br>
+                                Total Vehicle</label>
+                        </div>
+                        <div class="col-xl-2 col-sm-8 col-12">
+                            <label class="staff_count text-center"><span id="lbl-vehicle-local"></span> <br>
+                                Local</label>
+                        </div>
+                        <div class="col-xl-2 col-sm-8 col-12">
+                            <label class="staff_count text-center"><span id="lbl-vehicle-international"></span>
+                                <br> International</label>
+                        </div>
+                        <div class="col-xl-6 col-sm-8 col-12">
+                            <img src="../assets/img/sup-summary.svg" class="float-right" style="width: 200px">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-12 col-sm-12 col-12 mb-4">
+                    <div class="card">
+                        <div class="table-heading">
+                            <!-- Button here -->
+                            <label class="table-title" style="font-size: 25px;font-weight: 700">Vehicle
+                                Summary </label>
+                            <button class="btn btn-success btn-emp-add float-right" id="btn-register-vehicle"
+                                    style="width: 50px"><img src="../assets/img/add-emp.png" style="width: 30px">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table  custom-table no-footer" id="tbl-vehicle">
+                            <thead>
+                            <tr>
+                                <th>vehicle code</th>
+                                <th>License plate number</th>
+                                <th>category</th>
+                                <th>Fuel type</th>
+                                <th>Status</th>
+                                <th>Allocated staff member details</th>
+                                <th>Remarks</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 
