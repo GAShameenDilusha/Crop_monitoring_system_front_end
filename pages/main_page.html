@@ -474,21 +474,21 @@
 
                                 <div class="col-xl-4 col-sm-12 col-12 ">
                                     <div class="form-group">
-                                        <label>Crop Code</label>
-                                        <input type="text" placeholder="Crop Id" id="#txt-crop-code" readonly>
+                                        <label>Crop code</label>
+                                        <input type="text" placeholder="Crop code" id="#txt-crop-code" readonly>
                                     </div>
                                 </div>
 
 
                                 <div class="col-xl-4 col-sm-12 col-12 ">
                                     <div class="form-group">
-                                        <label>Common name </label>
-                                        <input type="text" placeholder="Name" id="txt-crop-common-name">
+                                        <label>Common name</label>
+                                        <input type="text" placeholder="Common name" id="txt-crop-common-name">
                                     </div>
                                 </div>
 
 
-                                <!--Category-->
+                                <!--&lt;!&ndash;Category&ndash;&gt;
                                 <div class="col-xl-4 col-sm-12 col-12 ">
                                     <div class="form-group">
                                         <label>Scientific name</label>
@@ -498,6 +498,12 @@
                                             <option value="LOCAL">Local</option>
                                         </select>
                                     </div>
+                                </div>-->
+                                <div class="col-xl-4 col-sm-12 col-12 ">
+                                    <div class="form-group">
+                                        <label>Scientific name</label>
+                                        <input type="text" placeholder="Scientific name" id="txt-crop-scientific-name">
+                                    </div>
                                 </div>
 
                             </div>
@@ -505,11 +511,30 @@
 
                             <div class="row">
 
-                                <div class="col-xl-2 col-sm-12 col-12 ">
+                                <!--<div class="col-xl-2 col-sm-12 col-12 ">
                                     <div class="form-group">
                                         <label>image</label>
                                         <input type="text" placeholder="image"
                                                id="file-crop-image">
+                                    </div>
+                                </div>-->
+                                <!--image 1-->
+                                <div class="col-xl-2 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <div class="mb-3">
+                                            <label for="file-crop-image" class="form-label">Image</label>
+                                            <input class="form-control"
+                                                   type="file"
+                                                   id="file-crop-image"
+                                                   accept="image/*"
+                                                   onchange="previewFieldImage(this, 'preview-crop-image')">
+                                        </div>
+                                        <div class="mt-3">
+                                            <img id="preview-crop-image"
+                                                 class="img-fluid custom-image"
+                                                 alt="Crop Image Preview"
+                                                 src="../assets/img/no-image-img.jpg">
+                                        </div>
                                     </div>
                                 </div>
 
