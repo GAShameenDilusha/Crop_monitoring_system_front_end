@@ -147,8 +147,7 @@
             <div class="col-xl-12 col-sm-12 col-12 mb-4">
                 <div class="card">
                     <div class="table-heading">
-                        <label class="table-title" style="font-size: 25px;font-weight: 700">Fieldes
-                            Summary </label>
+                        <label class="table-title" style="font-size: 25px;font-weight: 700">Fieldes Summary </label>
                         <button class="btn btn-success btn-emp-add float-right" id="btn-add-field"
                                 style="width: 50px"><img src="../assets/img/add-emp.png" style="width: 30px">
                         </button>
@@ -219,12 +218,28 @@
                                 </div>
 
 
-                                <div class="col-xl-2 col-sm-12 col-12 ">
+                                <!--<div class="col-xl-2 col-sm-12 col-12 ">
                                     <div class="form-group">
                                         <label>location (coordinate)</label>
                                         <input type="text" placeholder="location (coordinate)" id="txt-field-location">
                                     </div>
+                                </div>-->
+                                <div class="col-xl-2 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <label for="txt-field-location">Location (coordinate)</label>
+                                        <div class="input-with-button">
+                                            <input type="text"
+                                                   id="txt-field-location"
+                                                   placeholder="Latitude, Longitude"
+                                                   pattern="^-?\d+(\.\d+)?,\s*-?\d+(\.\d+)?$">
+                                            <button type="button" class="get-location-btn" onclick="getCurrentLocation()">
+                                                📍
+                                            </button>
+                                        </div>
+                                        <span class="error-message">Please enter valid coordinates (e.g., 12.3456, -78.9012)</span>
+                                    </div>
                                 </div>
+
 
                                 <div class="col-xl-2 col-sm-12 col-12 ">
                                     <div class="form-group">
@@ -233,21 +248,54 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xl-2 col-sm-12 col-12 ">
+                                <!--<div class="col-xl-2 col-sm-12 col-12 ">
                                     <div class="form-group">
                                         <label>Crops</label>
                                         <input type="text" placeholder="Crops" id="txt-field-crops">
                                     </div>
+                                </div>-->
+                                <div class="col-xl-4 col-sm-12 col-12 ">
+                                    <div class="form-group">
+                                        <label>Crops</label>
+                                        <select class="select" id="txt-field-crops">
+                                            <option value="Rice">Rice</option>
+                                            <option value="Cowpea">Cowpea</option>
+                                            <option value="Green gram">Green gram</option>
+                                            <option value="Chickpea">Chickpea</option>
+                                            <option value="Sweet potato">Sweet potato</option>
+                                            <option value="Reddish">Reddish</option>
+                                            <option value="Cassava">Cassava</option>
+                                        </select>
+                                    </div>
                                 </div>
 
-                                <div class="col-xl-2 col-sm-12 col-12 ">
+                                <!--<div class="col-xl-2 col-sm-12 col-12 ">
                                     <div class="form-group">
                                         <label>Staff</label>
                                         <input type="text" placeholder="Staff" id="txt-field-staff">
                                     </div>
+                                </div>-->
+                                <div class="col-xl-4 col-sm-12 col-12 ">
+                                    <div class="form-group">
+                                        <label>Staff</label>
+                                        <select class="select" id="txt-field-staff">
+                                            <option value="Manager">Manager</option>
+                                            <option value="Senior Assistant Manager ">Senior Assistant Manager</option>
+                                            <option value="Assistant Manager">Assistant Manager</option>
+                                            <option value="Admin and HR Staff">Admin and HR Staff</option>
+                                            <option value="Office Assistant">Office Assistant</option>
+                                            <option value="Senior Agronomist">Senior Agronomist</option>
+                                            <option value="Agronomist">Agronomist</option>
+                                            <option value="Soil scientist">Soil scientist</option>
+                                            <option value="Senior Technician">Senior Technician</option>
+                                            <option value="Technician">Technician</option>
+                                            <option value="Supervisors">Supervisors</option>
+                                            <option value="Labors">Labors</option>
+                                        </select>
+                                    </div>
                                 </div>
 
-                                <div class="col-xl-2 col-sm-12 col-12 ">
+                                <!--<div class="col-xl-2 col-sm-12 col-12 ">
                                     <div class="form-group">
                                         <label>Field image1</label>
                                         <input type="text" placeholder="Field image1" id="txt-field-field-image1">
@@ -259,7 +307,50 @@
                                         <label>Field image2</label>
                                         <input type="text" placeholder="Field image2" id="txt-field-field-image2">
                                     </div>
+                                </div>-->
+
+                                <br><br><br>
+                                <!--image 1-->
+                                <div class="col-xl-2 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <div class="mb-3">
+                                            <label for="field-image1" class="form-label">Field image 1</label>
+                                            <input class="form-control"
+                                                   type="file"
+                                                   id="field-image1"
+                                                   accept="image/*"
+                                                   onchange="previewFieldImage(this, 'preview-image1')">
+                                        </div>
+                                        <div class="mt-3">
+                                            <img id="preview-image1"
+                                                 class="img-fluid custom-image"
+                                                 alt="Image Preview 1"
+                                                 src="../assets/img/no-image-img.jpg">
+                                        </div>
+                                    </div>
                                 </div>
+
+                                <!--image 2-->
+                                <div class="col-xl-2 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <div class="mb-3">
+                                            <label for="field-image2" class="form-label">Field image 2</label>
+                                            <input class="form-control"
+                                                   type="file"
+                                                   id="field-image2"
+                                                   accept="image/*"
+                                                   onchange="previewFieldImage(this, 'preview-image2')">
+                                        </div>
+                                        <div class="mt-3">
+                                            <img id="preview-image2"
+                                                 class="img-fluid custom-image"
+                                                 alt="Image Preview 2"
+                                                 src="../assets/img/no-image-img.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+
+
 
                             </div>
 
