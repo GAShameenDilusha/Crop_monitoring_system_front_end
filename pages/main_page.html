@@ -1433,12 +1433,19 @@
                                 </div>
 
 
-                                <div class="col-xl-4 col-sm-12 col-12 ">
+                                <!--<div class="col-xl-4 col-sm-12 col-12 ">
                                     <div class="form-group">
                                         <label>Log Date</label>
                                         <input type="text" placeholder="Log Date" id="txt-log-date">
                                     </div>
+                                </div>-->
+                                <div class="col-xl-2 col-sm-12 col-12 ">
+                                    <div class="form-group">
+                                        <label>Log Date</label>
+                                        <input type="date" placeholder="Log Date" id="txt-log-date">
+                                    </div>
                                 </div>
+
 
 
                                 <!--Category-->
@@ -1458,10 +1465,28 @@
 
                             <div class="row">
 
-                                <div class="col-xl-2 col-sm-12 col-12 ">
+                                <!--<div class="col-xl-2 col-sm-12 col-12 ">
                                     <div class="form-group">
                                         <label>Observed image</label>
                                         <input type="text" placeholder="Observed image" id="file-observed-image">
+                                    </div>
+                                </div>-->
+                                <div class="col-xl-2 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <div class="mb-3">
+                                            <label for="file-observed-image" class="form-label">Field image 1</label>
+                                            <input class="form-control"
+                                                   type="file"
+                                                   id="file-observed-image"
+                                                   accept="image/*"
+                                                   onchange="previewFieldImage(this, 'preview-observed-image')">
+                                        </div>
+                                        <div class="mt-3">
+                                            <img id="preview-observed-image"
+                                                 class="img-fluid custom-image"
+                                                 alt="Observed Image Preview"
+                                                 src="../assets/img/no-image-img.jpg">
+                                        </div>
                                     </div>
                                 </div>
 
