@@ -280,3 +280,29 @@ function changeCropFiles() {
     $('#btn-crop-save').css('display', 'block');
     clearCropFields();
 }
+
+
+
+////////////////////////////////////////////
+/*image start*/
+function previewFieldImage(input, previewId) {
+    const preview = document.getElementById(previewId);
+
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    } else {
+        preview.src = '../assets/img/no-image-img.jpg';
+    }
+}
+
+// To get the selected image if needed
+function getCropImage() {
+    return document.getElementById('file-crop-image').files[0];
+}
+/*end*/
