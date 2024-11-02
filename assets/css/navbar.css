@@ -1,0 +1,31 @@
+ .sidebar {
+     width: 250px;
+     position: fixed;
+     top: 0;
+     left: 0;
+     height: 100vh;
+     z-index: 100;
+     padding: 20px 0;
+     background-color:/* #f8f9fa*/black;
+     border-right: 1px solid #dee2e6;
+ }
+
+.sidebar .nav-link {
+    padding: 12px 20px;
+    color: /*#333*/whitesmoke;
+    transition: all 0.3s;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #e9ecef;
+    color: #000;
+}
+
+.company-name {
+    padding: 15px 20px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 15px;
+    color: green;
+}
