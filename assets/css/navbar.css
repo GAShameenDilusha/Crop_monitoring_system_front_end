@@ -28,4 +28,11 @@
     border-bottom: 1px solid #dee2e6;
     margin-bottom: 15px;
     color: green;
+    position: relative;
+}
+
+
+#logo-new{
+    position: relative;
+    left: 20px;
 }
