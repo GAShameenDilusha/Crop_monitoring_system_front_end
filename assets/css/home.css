@@ -17,3 +17,31 @@
     left: 1150px;
     bottom: 700px;
 }
+
+/*
+.home-all-buttons{
+    width: 300px;
+}*/
+
+
+.btn-place-order {
+    min-width: 400px;  /* Set minimum width */
+    font-size: 0.950rem;  /* Smaller font size */
+    position: relative;
+    bottom: 800px;
+}
+
+
+
+
+/* Optional: Add some spacing and styling */
+ .chat-cont-right {
+     padding: 15px;
+     margin-right: 20px; /* Add some right margin if needed */
+     margin-top: 220px;
+ }
+
+.btn-place-order {
+    min-width: 120px;
+    margin: 5px;
+}
