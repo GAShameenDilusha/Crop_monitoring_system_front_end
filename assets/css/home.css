@@ -1,0 +1,19 @@
+#home-logo{
+    position: relative;
+    left: 100px;
+    top: 50px;
+}
+
+#date{
+    position: relative;
+    left: 990px;
+    bottom: 617px;
+
+}
+
+
+#time{
+    position: relative;
+    left: 1150px;
+    bottom: 700px;
+}
