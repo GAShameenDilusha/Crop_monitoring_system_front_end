@@ -51,3 +51,197 @@
     position: relative;
     bottom: 600px;
 }*/
+
+@media all and (max-width: 1148px) {
+    .after-home-page{
+        position: relative;
+        top:230px ;
+    }
+}
+
+
+
+@media all and (max-width: 1024px) {
+    .after-home-page{
+        position: relative;
+        top:230px ;
+    }
+}
+
+
+@media all and (max-width: 768px) {
+    .after-home-page{
+        position: relative;
+        top:610px ;
+    }
+}
+
+
+/*//////////////////////////////////////////////////////////////////*/
+
+
+
+/*1148 px*/
+@media all and (max-width: 1148px) {
+    #date{
+        left: 750px;
+        top:-600px ;
+    }
+}
+
+@media all and (max-width: 1148px) {
+    #time{
+        left: 950px;
+        top:-683px ;
+    }
+}
+
+@media all and (max-width: 1148px) {
+    #home-logo{
+        top:50px;
+        left: 190px;
+    }
+}
+
+@media all and (max-width: 1148px) {
+    #button-set{
+        position: relative;
+        top:350px ;
+        left: -170px;
+    }
+}
+
+
+/*//////////////////////////////////////////////////////////////////*/
+
+/*1024 px*/
+@media all and (max-width: 1024px) {
+    #date{
+        left: 640px;
+        top:-600px ;
+    }
+}
+
+@media all and (max-width: 1024px) {
+    #time{
+        left: 830px;
+        top:-683px ;
+    }
+}
+
+@media all and (max-width: 1024px) {
+    #home-logo{
+        top:50px;
+        left: 145px;
+    }
+}
+
+@media all and (max-width: 1024px) {
+    #button-set{
+        position: relative;
+        top:350px ;
+        left: -98px;
+    }
+}
+
+
+/*//////////////////////////////////////////////////////////////////*/
+
+/*990 px*/
+@media all and (max-width: 990px) {
+    #date{
+        left: 600px;
+        top:-600px ;
+    }
+}
+
+@media all and (max-width: 990px) {
+    #time{
+        left: 770px;
+        top:-683px ;
+    }
+}
+
+@media all and (max-width: 990px) {
+    #home-logo{
+        top:50px;
+        left: 5px;
+    }
+}
+
+@media all and (max-width: 990px) {
+    #button-set{
+        position: relative;
+        top:20px ;
+        left: 8px;
+    }
+}
+
+
+
+/*//////////////////////////////////////////////////////////////////*/
+
+/*768 px*/
+@media all and (max-width: 768px) {
+    #date{
+        left: 400px;
+        top:-600px ;
+    }
+}
+
+@media all and (max-width: 768px) {
+    #time{
+        left: 577px;
+        top:-683px ;
+    }
+}
+
+@media all and (max-width: 768px) {
+    #home-logo{
+        top:20px;
+        left: 125px;
+    }
+}
+
+@media all and (max-width: 768px) {
+    #button-set{
+        position: relative;
+        top:400px ;
+        left: -100px;
+    }
+}
+
+
+/*//////////////////////////////////////////////////////////////////*/
+
+/*500 px*/
+@media all and (max-width: 500px) {
+    #date{
+        left: 150px;
+        top:-600px ;
+    }
+}
+
+@media all and (max-width: 500px) {
+    #time{
+        left: 320px;
+        top:-683px ;
+    }
+}
+
+@media all and (max-width: 500px) {
+    #home-logo{
+        top:35px;
+        left: 5px;
+    }
+}
+
+@media all and (max-width: 500px) {
+    #button-set{
+        position: relative;
+        top:400px ;
+        left: 8px;
+    }
+}
+
+
