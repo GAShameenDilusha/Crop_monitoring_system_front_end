@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Next Travel PVT Ltd.</title>
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/signup.css" rel="stylesheet">
+
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/35c4f0c859.js"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700;900&family=Sofia+Sans:wght@300;400;700&display=swap"
+          rel="stylesheet">
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+
+        #user_profile{
+            display: none;
+        }
+
+        #user_p_div{
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+
+        button{
+            height: 30px;
+        }
+
+        input[type=text], input[type=number], input[type=date], input[type=email],
+        input[type=tel], input[type=password] {
+            font-size: 15px;
+            height: 25px;
+        !important;
+        }
+
+        input[type=file] {
+            height: 30px;
+        !important;
+        }
+
+
+        body{
+            padding-top: 25px;
+            background-image: url('assets/img/background.jpg');
+            height: 100vh;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            backdrop-filter: blur(6px); overflow: hidden;
+        }
+    </style>
+
+</head>
+<body>
+<!-- Your page content goes here -->
+
+<!--======================================  sign up page  ==========================================-->
+<section id="signup_page" class="position-relative py-4 py-xl-5">
+    <div class="container">
+        <div id="user_p_div">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h4 style="margin-top: 20px" id="welcome_header">Welcome To Green Shadow PVT Ltd!</h4>
+                <p style="color: #055160" class="w-lg-50">&quot;Welcome to Green Shadow PVT Ltd!&quot;</p>
+                <div id="home-logo">
+                    <img src="assets/img/Green-logo%202.png" class="home-logo" alt="" width="100" height="100">
+                </div>
+
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center" style="margin-top: 60px">
+            <div class="col-md-6 col-xl-4">
+                <div class="card mb-5">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <div class="bs-icon-xl bs-icon-circle bs-icon-primary bs-icon my-4">
+                            <h2>Sign Up</h2>
+                        </div>
+                        <form class="text-center" method="post">
+                            <div class="mb-3">
+                                <input class="form-control" name="username" placeholder="Username"
+                                                     type="text" id="register_username"/>
+                            </div>
+                            <div class="mb-3">
+                                <input class="form-control" name="password" placeholder="Password"
+                                                     type="password" id="register_password"/>
+                            </div>
+                            <div class="mb-3">
+                                <button id="next_button" class="btn btn-primary d-block w-100" >Next</button>
+                            </div>
+                            <a class="text-muted" href="login.html">&lt;- Back</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--==========================================  register user  ===========================================-->
+<div id="user_profile" class="container profile profile-view">
+    <form>
+        <div class="row profile-row">
+            <div class="col-md-12">
+                <h1>Profile </h1>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="form-group mb-3"><label class="form-label" style="padding-top: 0px;margin-top: 7px;">Name</label>
+                            <input class="form-control" type="text" name="firstname" id="register_name"/></div>
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label" style="margin-top: 19px;padding-bottom: 0px;padding-top: 0px;">Address</label>
+                    <input class="form-control" type="text" autocomplete="off"  name="address" id="register_address"/></div>
+                <div class="row">
+                    <div class="col"><label class="form-label">Age </label>
+                        <input class="form-control" type="number" name="age" autocomplete="off" id="register_user_age"/></div>
+
+
+                    <div class="col-md-2"><label class="form-label" style="margin-right: 35px;padding-left: 0px;padding-top: 2px;margin-top: 5px;padding-right: 0px;margin-left: 35px;">Gender </label>
+                        <div class="form-check" style="margin-left: 33px;">
+                            <input class="form-check-input" type="radio" id="register_user_male" name="register_user_gender"/>
+                            <label class="form-check-label" for="register_user_male" >Male</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-check" style="padding-bottom: 0px;margin-top: 39px;">
+                            <input class="form-check-input" type="radio" id="register_user_female" name="register_user_gender"/>
+                            <label class="form-check-label" for="register_user_female">Female</label>
+                        </div>
+                    </div>
+
+
+                </div><label class="form-label" style="margin-top: 16px;">Email</label>
+                <input class="form-control" type="email" autocomplete="off" id="register_email"/>
+
+                <label class="form-label" style="margin-top: 14px;">Contact No</label>
+                <input class="form-control" type="tel" autocomplete="off" id="register_user_contact"/>
+
+                <label class="form-label" style="margin-top: 19px;">NIC/Passport No</label>
+                <input class="form-control" type="text" autocomplete="off" id="register_user_nic_no"/>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6"><label class="form-label" style="padding-bottom: 0px;padding-top: 24px;">NIC/Passport Front Image</label>
+                        <input class="form-control form-control" type="file" name="avatar-file" style="width: 146px;padding-right: 314px;margin-left: 0px;margin-right: 10px;padding-left: 13px;" id="manage_user_nic_front_file"/></div>
+                    <div class="col-sm-12 col-md-6"><label class="form-label" style="padding-top: 24px;">NIC/Passport Back Image</label>
+                        <input class="form-control form-control" type="file" name="avatar-file" style="width: 146px;padding-right: 314px;margin-left: 0px;margin-right: 10px;padding-left: 13px;" id="manage_user_nic_back_file"/></div>
+
+
+                    <div class="col-md-2"><label class="form-label" style="margin-right: 35px;padding-left: 0px;padding-top: 10px;margin-top: 15px;padding-right: 0px;">Role </label>
+                        <div class="form-check" style="margin-left: 33px;">
+                            <input  class="form-check-input" type="radio" id="register_radio_admin" name="register_user_role"/>
+                            <label class="form-check-label" for="register_radio_admin" >Admin</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-check" style="padding-bottom: 0px;margin-top: 55px;">
+                            <input class="form-check-input" type="radio" id="register_radio_user" name="register_user_role"/>
+                            <label class="form-check-label" for="register_radio_user">User</label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col"><label class="form-label" style="padding-top: 24px;">Remark</label>
+                    <input class="form-control" type="text" name="firstname" style="margin-bottom: 25px;" />
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 content-right" style="padding-bottom: 0px;">
+                        <button class="btn btn-primary form-btn" type="submit" id="btn_register_user">Register </button>
+                        <button class="btn btn-danger form-btn" type="reset" id="btn_cancel_user">Cancel </button>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script src="assert/jquery-3.7.0.min.js"></script>
+<script type="module" src="controller/user_controller.js"></script>
+</body>
+</html>
