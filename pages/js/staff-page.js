@@ -1,300 +1,236 @@
-$('#btn-emp-update').css('display', 'none');
-let employeeImageBase64 = ''; // Define a global variable to store the base64 string
+// Global variable for storing staff image
+let staffImageBase64 = '';
 
-/*save customer*/
-
-$('#btn-register-employee').click(function () {
-
-
+// Handle staff registration button click
+$('#btn-register-staff').click(function () {
     $('#btn-emp-update').css('display', 'none');
     $('#btn-emp-save').css('display', 'block');
-    $('#btn-emp-clear').click();
+    clearStaffFields();
     setBranches();
-    setEmployeeCode();
-    setDesignations();
-
+    setStaffCode();
 });
 
-
+// Handle save staff
 $('#btn-emp-save').click(function () {
-
-    let profile_pic = employeeImageBase64;
-    let name = $('#txt-emp-name').val();
+    let firstName = $('#txt-emp-first-name').val();
+    let lastName = $('#txt-emp-last-name').val();
+    let fullName = firstName + ' ' + lastName;
     let gender = $('#txt-emp-gender').val();
-    if (gender === 'MALE') {
-        gender = 0;
-    } else if (gender === 'FEMALE') {
-        gender = 1;
-    } else {
-        gender = null;
-    }
-    let status = $('#txt-emp-status').val();
+    let genderCode = gender === 'MALE' ? 0 : (gender === 'FEMALE' ? 1 : null);
+
     let dob = $('#txt-emp-dob').val();
-    let build_no = $('#txt-emp-build-no').val();
+    let buildNo = $('#txt-emp-build-no').val();
     let lane = $('#txt-emp-lane').val();
     let city = $('#txt-emp-city').val();
     let state = $('#txt-emp-state').val();
-    let postal_code = $('#txt-emp-post-code').val();
+    let postalCode = $('#txt-emp-post-code').val();
     let contact = $('#txt-emp-contact').val();
-    let emergency = $('#txt-emp-emergency').val();
-    let guardian = $('#txt-emp-guardian').val();
     let email = $('#txt-emp-email').val();
     let code = $('#txt-emp-code').val();
     let designation = $('#txt-emp-designation').val();
     let branch = $('#txt-emp-branch').val();
-    let join_date = $('#txt-emp-join-date').val();
+    let joinDate = $('#txt-emp-join-date').val();
     let role = $('#txt-emp-role').val();
-    if (role === 'ADMIN') {
-        role = 0;
-    } else {
-        role = 1;
-    }
+    let vehicle = $('#txt-emp-vehicle').val();
 
+    let roleCode = role === 'ADMIN' ? 0 : 1;
 
-    let employeeDTO = {
-        profile_pic: profile_pic,
-        name: name,
-        gender: gender,
-        status: status,
+    let staffDTO = {
+        name: fullName,
+        gender: genderCode,
         dob: dob,
-        building_number: build_no,
+        building_number: buildNo,
         lane: lane,
         city: city,
         state: state,
-        postal_code: postal_code,
+        postal_code: postalCode,
         contact: contact,
-        guardian_contact: emergency,
-        guardian_name: guardian,
         email: email,
         employee_code: code,
         designation: designation,
         branch: {
             branch_code: branch
         },
-        joined_date: join_date,
-        role: role
+        joined_date: joinDate,
+        role: roleCode,
+        vehicle: vehicle
     };
 
-    let valid = checkValidity(employeeDTO);
-
-    if (valid) {
-
+    if (checkValidity(staffDTO)) {
         $.ajax({
-            url: `http://localhost:8080/api/v1/employee`,
+            url: 'http://localhost:8080/api/v1/employee',
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`
             },
             contentType: 'application/json',
-            data: JSON.stringify(employeeDTO),
+            data: JSON.stringify(staffDTO),
             success: function (response) {
                 if (response === true) {
-                    alert('Employee Added');
-                    loadAllEmployees();
+                    alert('Staff Added Successfully');
+                    loadAllStaff();
                     setBranches();
-                    setEmployeeCode();
-                    setDesignations();
-                    $('#btn-emp-clear').click();
+                    setStaffCode();
+                    clearStaffFields();
                 } else {
-                    alert('Employee Not Added');
+                    alert('Failed to Add Staff');
                 }
             }
         });
     }
+});
 
-})
-;
-
-/*edit customer*/
-
-$('#tbl-employee').on('click', '.btn-emp-update', function () {
-
+// Handle update button click in table
+$('#tbl-staff').on('click', '.btn-emp-update', function () {
     setBranches();
-    setDesignations();
-    const empId = $(this).closest('tr').find('td:eq(0) .action_label').text().trim(); // Trim any extra spaces
-
+    const staffId = $(this).closest('tr').find('td:eq(0) .action_label').text().trim();
 
     $.ajax({
-        url: `http://localhost:8080/api/v1/employee?employee_code=${empId}`,
+        url: `http://localhost:8080/api/v1/employee?employee_code=${staffId}`,
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`
         },
-        success: function (employee) {
-
+        success: function (staff) {
+            // Get branch info
             $.ajax({
-                url: `http://localhost:8080/api/v1/employee/branch?employee_code=${empId}`,
+                url: `http://localhost:8080/api/v1/employee/branch?employee_code=${staffId}`,
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`
                 },
                 success: function (branch) {
                     $('#txt-emp-branch').val(branch.branch_code);
-                    console.log(branch);
                 }
-            })
+            });
 
-            console.log(employee);
+            // Split full name into first and last name
+            let nameParts = staff.name.split(' ');
+            $('#txt-emp-first-name').val(nameParts[0]);
+            $('#txt-emp-last-name').val(nameParts.slice(1).join(' '));
 
-            if (employee.profile_pic === null || employee.profile_pic === '' || employee.profile_pic === undefined) {
-                $('#emp-img-preview').attr('src', '../assets/img/no-image-img.jpg');
-            } else {
-                $('#emp-img-preview').attr('src', 'data:image/jpeg;base64,' + employee.profile_pic);
-            }
-            $('#txt-emp-name').val(employee.name);
-            $('#txt-emp-gender').val(employee.gender);
-            $('#txt-emp-status').val(employee.status);
-            $('#txt-emp-dob').val(employee.dob);
-            $('#txt-emp-build-no').val(employee.building_number);
-            $('#txt-emp-lane').val(employee.lane);
-            $('#txt-emp-city').val(employee.city);
-            $('#txt-emp-state').val(employee.state);
-            $('#txt-emp-post-code').val(employee.postal_code);
-            $('#txt-emp-contact').val(employee.contact);
-            $('#txt-emp-emergency').val(employee.guardian_contact);
-            $('#txt-emp-guardian').val(employee.guardian_name);
-            $('#txt-emp-email').val(employee.email);
-            $('#txt-emp-code').val(employee.employee_code);
-            $('#txt-emp-designation').val(employee.designation);
-            $('#txt-emp-join-date').val(employee.joined_date);
-            $('#txt-emp-role').val(employee.role);
+            $('#txt-emp-gender').val(staff.gender === 0 ? 'MALE' : 'FEMALE');
+            $('#txt-emp-dob').val(staff.dob);
+            $('#txt-emp-build-no').val(staff.building_number);
+            $('#txt-emp-lane').val(staff.lane);
+            $('#txt-emp-city').val(staff.city);
+            $('#txt-emp-state').val(staff.state);
+            $('#txt-emp-post-code').val(staff.postal_code);
+            $('#txt-emp-contact').val(staff.contact);
+            $('#txt-emp-email').val(staff.email);
+            $('#txt-emp-code').val(staff.employee_code);
+            $('#txt-emp-designation').val(staff.designation);
+            $('#txt-emp-join-date').val(staff.joined_date);
+            $('#txt-emp-role').val(staff.role === 0 ? 'ADMIN' : 'USER');
+            $('#txt-emp-vehicle').val(staff.vehicle);
 
             $('#btn-emp-save').css('display', 'none');
             $('#btn-emp-update').css('display', 'block');
-            navigateToPage('#employee-register-page');
-
-
         }
     });
+});
 
-})
-
+// Handle update staff
 $('#btn-emp-update').click(function () {
-    let profile_pic = employeeImageBase64;
-    let name = $('#txt-emp-name').val();
+    let firstName = $('#txt-emp-first-name').val();
+    let lastName = $('#txt-emp-last-name').val();
+    let fullName = firstName + ' ' + lastName;
     let gender = $('#txt-emp-gender').val();
-    if (gender === 'MALE') {
-        gender = 0;
-    } else {
-        gender = 1;
-    }
-    let status = $('#txt-emp-status').val();
+    let genderCode = gender === 'MALE' ? 0 : 1;
+
     let dob = $('#txt-emp-dob').val();
-    let build_no = $('#txt-emp-build-no').val();
+    let buildNo = $('#txt-emp-build-no').val();
     let lane = $('#txt-emp-lane').val();
     let city = $('#txt-emp-city').val();
     let state = $('#txt-emp-state').val();
-    let postal_code = $('#txt-emp-post-code').val();
+    let postalCode = $('#txt-emp-post-code').val();
     let contact = $('#txt-emp-contact').val();
-    let emergency = $('#txt-emp-emergency').val();
-    let guardian = $('#txt-emp-guardian').val();
     let email = $('#txt-emp-email').val();
     let code = $('#txt-emp-code').val();
     let designation = $('#txt-emp-designation').val();
     let branch = $('#txt-emp-branch').val();
-    let join_date = $('#txt-emp-join-date').val();
+    let joinDate = $('#txt-emp-join-date').val();
     let role = $('#txt-emp-role').val();
-    if (role === 'ADMIN') {
-        role = 0;
-    } else {
-        role = 1;
-    }
-    console.log(join_date);
+    let vehicle = $('#txt-emp-vehicle').val();
 
-    let employeeDTO = {
-        profile_pic: profile_pic,
-        name: name,
-        gender: gender,
-        status: status,
+    let roleCode = role === 'ADMIN' ? 0 : 1;
+
+    let staffDTO = {
+        name: fullName,
+        gender: genderCode,
         dob: dob,
-        building_number: build_no,
+        building_number: buildNo,
         lane: lane,
         city: city,
         state: state,
-        postal_code: postal_code,
+        postal_code: postalCode,
         contact: contact,
-        guardian_contact: emergency,
-        guardian_name: guardian,
         email: email,
         employee_code: code,
         designation: designation,
         branch: {
             branch_code: branch
         },
-        joined_date: join_date,
-        role: role
+        joined_date: joinDate,
+        role: roleCode,
+        vehicle: vehicle
     };
-    console.log(employeeDTO);
+
     $.ajax({
-        url: `http://localhost:8080/api/v1/employee`,
+        url: 'http://localhost:8080/api/v1/employee',
         method: 'PUT',
         headers: {
             'Authorization': `Bearer ${token}`
         },
         contentType: 'application/json',
-        data: JSON.stringify(employeeDTO),
+        data: JSON.stringify(staffDTO),
         success: function (response) {
             if (response === true) {
-                alert('Employee Update Successfully');
-                navigateToPage('#employee-page');
-                $('#btn-emp-clear').click();
+                alert('Staff Updated Successfully');
+                loadAllStaff();
+                clearStaffFields();
+                $('#btn-emp-update').css('display', 'none');
+                $('#btn-emp-save').css('display', 'block');
             } else {
-                alert('Employee Not Update');
+                alert('Failed to Update Staff');
             }
         }
     });
-
 });
 
-/*Delete employee*/
+// Handle delete staff
+$('#tbl-staff').on('click', '.btn-emp-delete', function () {
+    const staffId = $(this).closest('tr').find('td:eq(0) .action_label').text().trim();
 
-$('#tbl-employee').on('click', '.btn-emp-delete', function () {
-
-    const empId = $(this).closest('tr').find('td:eq(0) .action_label').text().trim();
-    Swal.fire({
-        title: "Are you sure you want to delete this Employee?",
-        icon: "warning",
-        showCancelButton: true,
-        cancelButtonColor: "#3085d6",
-        confirmButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-    }).then((result) => {
-        if (result.isConfirmed) {
-
-
-            $.ajax({
-                url: `http://localhost:8080/api/v1/employee?employee_code=${empId}`,
-                method: 'DELETE',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                },
-                success: function (response) {
-                    if (response === true) {
-                        loadAllEmployees();
-                        Swal.fire({
-                            title: "Deleted!",
-                            text: "Your file has been deleted.",
-                            icon: "success"
-                        });
-                    } else {
-                        Swal.fire({
-                            title: "Error!",
-                            text: "Your file has not been deleted.",
-                            icon: "error"
-                        });
-                    }
+    if (confirm('Are you sure you want to delete this staff member?')) {
+        $.ajax({
+            url: `http://localhost:8080/api/v1/employee?employee_code=${staffId}`,
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+            success: function (response) {
+                if (response === true) {
+                    alert('Staff Deleted Successfully');
+                    loadAllStaff();
+                } else {
+                    alert('Failed to Delete Staff');
                 }
-            });
-        }
-    });
+            }
+        });
+    }
 });
 
-
-/*clear customer*/
+// Clear staff fields
 $('#btn-emp-clear').click(function () {
-    $('#txt-emp-name').val('');
+    clearStaffFields();
+});
+
+// Utility Functions
+function clearStaffFields() {
+    $('#txt-emp-first-name').val('');
+    $('#txt-emp-last-name').val('');
     $('#txt-emp-gender').val('');
-    $('#txt-emp-status').val('');
     $('#txt-emp-dob').val('');
     $('#txt-emp-build-no').val('');
     $('#txt-emp-lane').val('');
@@ -302,275 +238,195 @@ $('#btn-emp-clear').click(function () {
     $('#txt-emp-state').val('');
     $('#txt-emp-post-code').val('');
     $('#txt-emp-contact').val('');
-    $('#txt-emp-emergency').val('');
-    $('#txt-emp-guardian').val('');
     $('#txt-emp-email').val('');
+    $('#txt-emp-code').val('');
     $('#txt-emp-designation').val('');
     $('#txt-emp-branch').val('');
     $('#txt-emp-join-date').val('');
     $('#txt-emp-role').val('');
-    $('#emp-img-preview').attr('src', '../assets/img/no-image-img.jpg');
-});
+    $('#txt-emp-vehicle').val('');
+}
 
-/*set employee code*/
-function setEmployeeCode() {
+function setStaffCode() {
     $.ajax({
-        url: `http://localhost:8080/api/v1/employee/id`,
+        url: 'http://localhost:8080/api/v1/employee/id',
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`
         },
-        success: function (employeeCode) {
-            $('#txt-emp-code').val(employeeCode);
+        success: function (staffCode) {
+            $('#txt-emp-code').val(staffCode);
         }
     });
 }
 
-/*set branches*/
 function setBranches() {
-
     $('#txt-emp-branch').empty();
-    $('#txt-emp-branch').append(new Option('Select Branch', ''));
+    $('#txt-emp-branch').append(new Option('Select Field', ''));
 
     $.ajax({
-        url: `http://localhost:8080/api/v1/branch/all`,
+        url: 'http://localhost:8080/api/v1/branch/all',
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`
         },
         success: function (branches) {
             if (branches.length === 0) {
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "No Branches Found! Please Add Branches First!",
-                });
+                alert('No Fields Found! Please Add Fields First!');
             } else {
-                for (let i = 0; i < branches.length; i++) {
-                    $('#txt-emp-branch').append(new Option(branches[i].branch_name, branches[i].branch_code));
-                }
+                branches.forEach(branch => {
+                    $('#txt-emp-branch').append(new Option(branch.branch_name, branch.branch_code));
+                });
             }
         }
     });
 }
 
-/*set designations*/
+function loadAllStaff() {
+    $('#tbl-staff tbody').empty();
 
-function setDesignations() {
-    $('#txt-emp-designation').empty();
-    $('#txt-emp-designation').append(new Option('Select Designation', ''));
     $.ajax({
-        url: `http://localhost:8080/api/v1/employee/designations`,
+        url: 'http://localhost:8080/api/v1/employee/all',
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`
         },
-        success: function (designations) {
-
-            console.log(designations);
-            for (let i = 0; i < designations.length; i++) {
-                $('#txt-emp-designation').append(new Option(designations[i], designations[i]));
-
-            }
-        }
-    });
-}
-
-/*set Image*/
-
-
-function empImgPreview(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $('#emp-img-preview').attr('src', e.target.result);
-            employeeImageBase64 = e.target.result.split(',')[1]; // Store the base64 string
-        }
-        reader.readAsDataURL(input.files[0]);
-    } else {
-        $('#emp-img-preview').attr('src', '../assets/img/no-image-img.jpg');
-        employeeImageBase64 = ''; // Reset the base64 string if no image selected
-    }
-}
-
-/*get all employee details*/
-function loadAllEmployees() {
-    $('#tbl-employee tbody tr').remove();
-    $.ajax({
-        url: `http://localhost:8080/api/v1/employee/all`,
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${token}`
-        },
-        success: function (employees) {
-
-            console.log(employees);
-
-            for (let i = 0; i < employees.length; i++) {
-                let employee = employees[i];
-
-                console.log(employee);
-                (function (employee) { // Using a closure to maintain scope
-                    $.ajax({
-                        url: `http://localhost:8080/api/v1/employee/branch?employee_code=${employee.employee_code}`,
-                        method: 'GET',
-                        headers: {
-                            'Authorization': `Bearer ${token}`
-                        },
-                        success: function (branch) {
-                            let branch_name = branch.branch_name;
-                            let row = `<tr>
-                                <td>
-                                    <label class="action_label">${employee.employee_code}</label>
-                                </td>
-                                <td>
-                                    <label>${employee.name}</label>
-                                </td>
-                                <td>
-                                    <label>${employee.designation}</label>
-                                </td>
-                                <td>
-                                    <label>${employee.contact}</label>
-                                </td>
-                                <td>
-                                    <label class="action_label">${branch_name}</label>
-                                </td>
-                                <td>
-                                    <label>${employee.role}</label>
-                                </td>
+        success: function (staffList) {
+            staffList.forEach(staff => {
+                $.ajax({
+                    url: `http://localhost:8080/api/v1/employee/branch?employee_code=${staff.employee_code}`,
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    },
+                    success: function (branch) {
+                        const row = `
+                            <tr>
+                                <td><label class="action_label">${staff.employee_code}</label></td>
+                                <td><label>${staff.name}</label></td>
+                                <td><label>${staff.designation}</label></td>
+                                <td><label>${staff.contact}</label></td>
+                                <td><label>${branch.branch_name}</label></td>
+                                <td><label>${staff.role === 0 ? 'ADMIN' : 'USER'}</label></td>
                                 <td>
                                     <div class="action-label">
-                                        <a class="btn btn-warning btn-emp-update"><img src="../assets/img/edit.png" alt="edit" style="width: 20px; height: 20px;"/></a>
-                                        <a class="btn btn-danger btn-emp-delete"><img src="../assets/img/remove.png" alt="delete" style="width: 20px; height: 20px;"/></a>
+                                        <a class="btn btn-warning btn-emp-update">
+                                            <img src="../assets/img/edit.png" alt="edit" style="width: 20px; height: 20px;"/>
+                                        </a>
+                                        <a class="btn btn-danger btn-emp-delete">
+                                            <img src="../assets/img/remove.png" alt="delete" style="width: 20px; height: 20px;"/>
+                                        </a>
                                     </div>
                                 </td>
-                            </tr>`;
-                            $('#tbl-employee tbody').append(row);
-                        }
-                    });
-                })(employee);
-            }
+                            </tr>
+                        `;
+                        $('#tbl-staff tbody').append(row);
+                    }
+                });
+            });
         }
     });
 }
 
-function clearEmployeeFields() {
-    $('#btn-emp-clear').click();
-}
-
-
-function setEmployeeCounts() {
+function setStaffCounts() {
     $.ajax({
-        method: 'GET',
         url: 'http://localhost:8080/api/v1/employee/count',
+        method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`
         },
-        success: function (count) {
-            console.log(count);
-            $('#total-employees').text(count.totalEmployeeCount);
-            $('#total-admins').text(count.totalAdminEmployeeCount);
-            $('#total-users').text(count.totalUserEmployeeCount);
+        success: function (counts) {
+            $('#total-staffs').text(counts.totalEmployeeCount);
+            $('#total-users').text(counts.totalUserEmployeeCount);
+            $('#total-admins').text(counts.totalAdminEmployeeCount);
         }
     });
 }
 
 function checkValidity(data) {
-    const showError = (message) => {
-        Swal.fire({
-            position: "top-end",
-            icon: "error",
-            title: message,
-            showConfirmButton: false,
-            timer: 1500
-        });
-    };
-
-    // Define regex patterns for specific validations
+    // Email and contact validation patterns
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const contactPattern = /^\d{10}$/;
+
+    // Date validations
     const currentDate = new Date();
     const dobDate = new Date(data.dob);
     const joinDate = new Date(data.joined_date);
 
     if (!data.name) {
-        showError("Employee name is missing");
-        return false;
-    }
-    if (!(data.gender === 0 || data.gender === 1)) {
-        showError("Gender is missing");
+        alert('Staff name is required');
         return false;
     }
 
-    /*   if (!(data.gender.value ==="MALE" || data.gender.value === "FEMALE")){
-           showError("Gender is missing");
-           return false;
-       }*/
-    if (!data.status) {
-        showError("Employee status is missing");
+    if (data.gender === null) {
+        alert('Gender is required');
         return false;
     }
 
     if (!data.dob) {
-        showError("Date of birth is missing");
-        return false;
-    } else if (dobDate >= currentDate) {
-        showError("Date of birth cannot be in the future");
+        alert('Date of birth is required');
         return false;
     }
 
-    if (!data.joined_date) {
-        showError("Joining date is missing");
-        return false;
-    } else if (joinDate > currentDate) {
-        showError("Joining date cannot be in the future");
+    if (dobDate >= currentDate) {
+        alert('Date of birth cannot be in the future');
         return false;
     }
 
     if (!data.contact) {
-        showError("Contact number is missing");
+        alert('Contact number is required');
         return false;
-    } else if (!contactPattern.test(data.contact)) {
-        showError("Contact number is invalid");
+    }
+
+    if (!contactPattern.test(data.contact)) {
+        alert('Invalid contact number format');
         return false;
     }
 
     if (!data.email) {
-        showError("Email is missing");
+        alert('Email is required');
         return false;
-    } else if (!emailPattern.test(data.email)) {
-        showError("Email is invalid");
+    }
+
+    if (!emailPattern.test(data.email)) {
+        alert('Invalid email format');
         return false;
     }
 
     if (!data.building_number) {
-        showError("Building number is missing");
+        alert('Building number is required');
         return false;
     }
 
     if (!data.lane) {
-        showError("Lane is missing");
+        alert('Lane is required');
         return false;
     }
 
     if (!data.city) {
-        showError("City is missing");
+        alert('City is required');
         return false;
     }
-
 
     if (!data.branch.branch_code) {
-        showError("Branch is missing");
+        alert('Field is required');
         return false;
     }
-
 
     if (!data.designation) {
-        showError("Designation is missing");
+        alert('Designation is required');
         return false;
     }
 
-    // Add more field validations as needed
+    if (!data.joined_date) {
+        alert('Join date is required');
+        return false;
+    }
+
+    if (joinDate > currentDate) {
+        alert('Join date cannot be in the future');
+        return false;
+    }
 
     return true;
 }
