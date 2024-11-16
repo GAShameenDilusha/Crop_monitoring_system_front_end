@@ -20,3 +20,5 @@ function updateDateTime() {
 
     // Update every second
     setInterval(updateDateTime, 1000);
+
+
