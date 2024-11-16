@@ -7,7 +7,6 @@
     <link rel="shortcut icon" href="../assets/img/favicon.png">
 
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-
     <link rel="stylesheet" href="../assets/plugins/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="../assets/plugins/fontawesome/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,15 +22,9 @@
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/home.css">
 
-
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-
-
-    <script src="../assets/js/html5shiv.min.js"></script>
-    <script src="../assets/js/respond.min.js"></script>
 
 <!--    <style>
         /* Normalize CSS */
@@ -132,7 +125,7 @@
 
 
 <!-- Sidebar Navigation -->
-<nav>
+<!--<nav>
     <div class="sidebar">
         <div class="company-name">Green Shadow PVT Ltd.
             <img id="logo-new" src="../assets/img/Green-logo%202.png" style="width: 50px"/>
@@ -188,11 +181,70 @@
             </li>
         </ul>
     </div>
-    <div class="nav-toggle">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
+
+</nav>-->
+<nav>
+    <div class="sidebar">
+        <div class="company-name">
+            Green Shadow PVT Ltd.
+            <img id="logo-new" src="../assets/img/Green-logo%202.png" style="width: 50px"/>
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="#original-home-page">
+                    <i class="bi bi-house-door me-2"></i>
+                    Home
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#original-field-page">
+                    <i class="bi bi-grid me-2"></i>
+                    Field
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#original-crop-page">
+                    <i class="bi bi-flower1 me-2"></i>
+                    Crop
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#original-staff-page">
+                    <i class="bi bi-people me-2"></i>
+                    Staff
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#original-monitoring-log-page">
+                    <i class="bi bi-clipboard-data me-2"></i>
+                    Monitoring-log
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#original-vehicle-page">
+                    <i class="bi bi-truck me-2"></i>
+                    Vehicle
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#original-equipment-page">
+                    <i class="bi bi-tools me-2"></i>
+                    Equipment
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="bi bi-person me-2"></i>
+                    User
+                </a>
+            </li>
+        </ul>
     </div>
+
+    <!-- Hamburger Menu Button -->
+    <button class="hamburger-menu" id="hamburger-menu">
+        <i class="bi bi-list"></i>
+    </button>
 </nav>
 
 
@@ -337,9 +389,12 @@
                     <div class="card">
                         <div class="table-heading">
                             <label class="table-title" style="font-size: 25px;font-weight: 700">Fieldes Summary </label>
-                            <button class="btn btn-success btn-emp-add float-right" id="btn-add-field"
-                                    style="width: 50px"><img src="../assets/img/add.png" style="width: 25px">
-                            </button>
+                            <a href="#original-field-page2">
+                                <button class="btn btn-success btn-emp-add float-right" id="btn-add-field" style="width: 50px">
+                                    <img src="../assets/img/add.png" style="width: 25px">
+                                </button>
+                            </a>
+
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -635,9 +690,11 @@
                                 <!-- Button here -->
                                 <label class="table-title" style="font-size: 25px;font-weight: 700">Crop
                                     Summary </label>
+                                <a href="#original-crop-page2">
                                 <button class="btn btn-success btn-emp-add float-right" id="btn-register-crop"
                                         style="width: 50px"><img src="../assets/img/add.png" style="width: 25px">
                                 </button>
+                                </a>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -858,9 +915,11 @@
                                 <!-- Button here -->
                                 <label class="table-title" style="font-size: 25px;font-weight: 700">Staff
                                     Summary </label>
+                                <a href="#original-staff-page2">
                                 <button class="btn btn-success btn-emp-add float-right" id="btn-register-staff"
                                         style="width: 50px"><img src="../assets/img/add-emp.png" style="width: 30px">
                                 </button>
+                                </a>
                             </div>
 
                         </div>
@@ -1247,9 +1306,11 @@
                                 <!-- Button here -->
                                 <label class="table-title" style="font-size: 25px;font-weight: 700">Monitoring log
                                     Summary </label>
+                                <a href="#original-monitoring-log-page2">
                                 <button class="btn btn-success btn-emp-add float-right" id="btn-register-monitoring log"
                                         style="width: 50px"><img src="../assets/img/add.png" style="width: 25px">
                                 </button>
+                                </a>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -1522,9 +1583,11 @@
                                 <!-- Button here -->
                                 <label class="table-title" style="font-size: 25px;font-weight: 700">Vehicle
                                     Summary </label>
+                                <a href="#original-vehicle-page2">
                                 <button class="btn btn-success btn-emp-add float-right" id="btn-register-vehicle"
                                         style="width: 50px"><img src="../assets/img/add.png" style="width: 25px">
                                 </button>
+                                </a>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -1721,9 +1784,11 @@
                                 <!-- Button here -->
                                 <label class="table-title" style="font-size: 25px;font-weight: 700">Equipment
                                     Summary </label>
+                                <a href="#original-equipment-page2">
                                 <button class="btn btn-success btn-emp-add float-right" id="btn-register-equipment"
                                         style="width: 50px"><img src="../assets/img/add.png" style="width: 25px">
                                 </button>
+                                </a>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -1893,35 +1958,18 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
         crossorigin="anonymous"></script>
 
 <script src="../assets/js/popper.min.js"></script>
 <script src="../assets/js/bootstrap.min.js"></script>
-
 <script src="../assets/js/feather.min.js"></script>
-
 <script src="../assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-
 <script src="../assets/plugins/apexchart/apexcharts.min.js"></script>
 <script src="../assets/plugins/apexchart/chart-data.js"></script>
-
 <script src="../assets/js/script.js"></script>
 
-
-<script src="../pages/js/navigation.js"></script>
+<script src="../pages/js/navbar.js"></script>
 <script src="../pages/js/staff-page.js"></script>
 <script src="../pages/js/equipment-page.js"></script>
 <script src="../pages/js/crop-page.js"></script>
@@ -1931,21 +1979,9 @@
 <script src="../pages/js/home-page.js"></script>
 <script src="../pages/js/user-page.js"></script>
 
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
-<script>
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    navToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
-</script>
-
-
-
+<script src="../assets/js/html5shiv.min.js"></script>
+<script src="../assets/js/respond.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
