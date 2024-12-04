@@ -1,0 +1,98 @@
+
+
+    /* Glass Effect on Profile Container */
+.profile-container {
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white for glass effect */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    border-radius: 15px;
+    padding: 20px;
+    margin: auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    max-height: 80vh;
+    max-width: 80%;
+    overflow-y: auto;
+}
+
+/* Glass Effect on Input Fields */
+.profile-field input, .profile-field select {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: black;
+    padding: 8px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+    box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
+}
+
+/* Hover effect for Input Fields */
+.profile-field input:hover, .profile-field select:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+.profile-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 30px; /* Spacing between items */
+}
+
+
+/* Button Styles */
+.edit-btn, .save-btn, .delete-btn {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(6px);
+    border: none;
+    padding: 8px 16px;
+    color: #274D40;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-bottom: 10px;
+    background: linear-gradient(to bottom, #fcfcfdff 0%, #002379 200%);
+
+}
+
+/* Hover effect for Buttons */
+.edit-btn:hover, .save-btn:hover, .delete-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+
+
+/* Navbar Styling */
+.navbar-light .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #274D40;
+}
+
+/* Profile Header Styling */
+.profile-header h3 {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+#saveChangesBtn{
+    margin-top: 20px;
+    color: #274D40;
+}
+
+#deleteAccountBtn{
+    margin-top: 20px;
+    color: red;
+}
+.profile-field label{
+    font-size: 18px;
+    font-weight: 200;
+    color: #274D40;
+}
+
+/* Full width on mobile view */
+@media (max-width: 768px) {
+    .profile-fields {
+        grid-template-columns: 1fr; /* One column */
+    }
+}

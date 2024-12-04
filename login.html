@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<!--<head>
     <meta charset="UTF-8">
     <title>Crop monitoring system</title>
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/all.min.css" rel="stylesheet">
-    <link href="assets/css/signup.css" rel="stylesheet">
+    <link href="assets/csssss/bootstrap.css" rel="stylesheet">
+    <link href="assets/csssss/all.min.css" rel="stylesheet">
+    <link href="assets/csssss/signup.css" rel="stylesheet">
 
     <script src="https://kit.fontawesome.com/35c4f0c859.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +34,7 @@
 
 <body>
 
-<section class="position-relative py-4 py-xl-5">
+&lt;!&ndash;<section class="position-relative py-4 py-xl-5">
     <div class="container">
         <div id="user_p_div">
             <div class="col-md-8 col-xl-6 text-center mx-auto">
@@ -65,15 +65,95 @@
             </div>
         </div>
     </div>
+</section>&ndash;&gt;
+
+<section id="login-section">
+
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="login-card card shadow-lg">
+            <div class="row no-gutters">
+                <div class="col-md-6 logo-section d-flex flex-column justify-content-center align-items-center">
+                    <div>
+                        <img src="assets/img/Green-logo%202.png" alt="Green Shadow Logo" class="logo-img" width="300px">
+                    </div>
+                    &lt;!&ndash;<div class="hand-image-container">
+                        <img src="assets/images/depositphotos_7151451-stock-photo-plant-in-hands-removebg-preview.png" alt="Hand with Plant" class="hand-img">
+                    </div>&ndash;&gt;
+                </div>
+                <div class="col-md-6 p-4">
+                    <h3 class="text-center mb-4 welcome">Welcome Back!</h3>
+                    <form>
+                        <div class="form-group position-relative form-group-custom">
+                            <span class="input-icon"><i class="fas fa-user"></i></span>
+                            <input id="login-email" type="text" class="form-control userName" placeholder="User name" required>
+                        </div>
+                        <div class="form-group position-relative form-group-custom">
+                            <span class="input-icon"><i class="fas fa-lock "></i></span>
+                            <input id="login-password" type="password" class="form-control password" placeholder="Password" required>
+                        </div>
+                        <div class="text-right">
+                            <a href="#" class="forgot-password">Forgot password?</a>
+                        </div>
+                        <div class="d-flex justify-content-between mt-4">
+                            <button id="login-signIn" type="button" class="btn btn-success">Sign In</button>
+                            <button id="login-signUp" type="button" class="btn btn-warning">Sign Up</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
+<section id="signUp-section">
+    <div class="container d-flex justify-content-center align-items-center min-vh-100 custom-container">
+        <div class="login-card card shadow-lg">
+            <div class="row no-gutters">
+                <div class="col-md-6 p-4">
+                    <h3 class="text-center mb-4 welcome">Create a account!</h3>
+                    <form>
 
-
+                        <div class="form-group position-relative form-group-custom">
+                            <span class="input-icon"><i class="fas fa-envelope"></i></span>
+                            <input id="signUp-email" type="email" class="form-control userName" placeholder="Email" required>
+                        </div>
+                        <div class="form-group position-relative form-group-custom">
+                            <span class="input-icon"><i class="fas fa-lock"></i></span>
+                            <input id="signUp-password" type="password" class="form-control password " placeholder="Password" required>
+                        </div>
+                        <div class="form-group form-group-custom ">
+                            <label><span class="input-icon"><i class="fas fa-briefcase"></i></span></label>
+                            <select id="SelectRole" class="form-control role" required>
+                                <option value="">Choose Your role...</option>
+                                <option value="ADMINISTRATOR">Admin</option>
+                                <option value="MANAGER">Manager</option>
+                                <option value="SCIENTIST">Scientist</option>
+                                <option value="OTHER">Other</option>
+                            </select>
+                        </div>
+                        <div class="d-flex justify-content-between mt-4">
+                            <button id="signInBtn" type="button" class="btn btn-warning">Sign In</button>
+                            <button id="signUpBtn" type="button" class="btn btn-success">Sign Up</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 logo-section d-flex flex-column justify-content-center align-items-center">
+                    <div>
+                        <img src="assets/img/Green-logo%202.png" alt="Green Shadow Logo" class="logo-img" width="300px">
+                    </div>
+                  &lt;!&ndash;  <div class="hand-image-container">
+                        <img src="assets/images/depositphotos_7151451-stock-photo-plant-in-hands-removebg-preview.png" alt="Hand with Plant" class="hand-img">
+                    </div>&ndash;&gt;
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="assert/jquery-3.7.0.min.js"></script>
-<script src="controller/login.js"></script>
-</body>
+<script src="pages/js/Script.js"></script>
+</body>-->
 </html>

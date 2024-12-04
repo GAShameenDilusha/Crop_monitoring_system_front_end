@@ -1,0 +1,159 @@
+
+    /* Customize sidebar and main content styles here */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #FAF5E6;
+}
+.sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: black;
+    border-right: 1px solid #ddd;
+    transition: transform 0.3s ease;
+}
+.sidebar-header img {
+    width: 40%;
+    margin: 5px auto;
+    display: block;
+}
+.sidebar ul {
+    padding-left: 0;
+}
+.sidebar ul li {
+    list-style: none;
+    margin: 2rem 0;
+
+}
+.sidebar ul li span {
+    padding: 2px 15px;
+    display: block;
+    text-decoration: none;
+    font-size: 16px;
+    color: #FAF5E6;
+}
+.sidebar ul li span:hover {
+    padding: 12px 20px;
+    color: /*#333*/whitesmoke;
+    transition: all 0.3s;
+    background-color: #e9ecef;
+    color: #000;
+    cursor: pointer;
+}
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+
+}
+.custom-nav{
+    margin-left: 250px;
+
+}
+.dashboard-cards{
+    position: relative;
+    top: 100px;
+    margin-top: 40px;
+}
+.chart-cards{
+    /*margin-top: 70px;*/
+    display: none;
+}
+.dashboard-topic{
+    font-weight: bolder;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.15); /* Transparent white */
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.15); /* Soft shadow */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    padding: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth animation */
+}
+
+.glass-card:hover {
+    background: rgb(39, 77, 64,0.15); /* Transparent white */
+    transform: translateY(-5px); /* Lift on hover */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 12px 30px rgba(0, 0, 0, 0.25); /* Stronger shadow */
+}
+
+.glass-card .card-title, .glass-card .card-text {
+    color: green; /* Light color for text */
+}
+
+.dashboard-cards {
+    margin-top: 30px;
+}
+
+.profile-icon i{
+    font-size: 24px;
+    padding-left: 23px;
+    color: #274D40;
+    cursor: pointer;
+}
+.menu-toggle i{
+    font-size: 22px;
+    padding-right: 20px;
+    color: #274D40;
+    cursor: pointer;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    .sidebar.active {
+        transform: translateX(0);
+        display: block !important;
+        z-index: 10;
+        top: 61px;
+
+    }
+    .dashboard-cards{
+        margin-top: 60px;
+    }
+    .main-content {
+        margin-left: 0;
+    }
+    .top-navbar {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        background: #f7f7f7;
+        padding: 10px 20px;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 2rem;
+    }
+    .top-navbar .menu-toggle {
+        cursor: pointer;
+    }
+    .custom-nav{
+        display: none;
+    }
+
+}
+
+
+ /*////////////////////////////////////////////0*/
+    #date{
+        position: relative;
+        left: 600px;
+        bottom: -43px;
+
+    }
+
+
+    #time{
+        position: relative;
+        left: 800px;
+        bottom: 20px;
+        margin: 0;
+    }

@@ -1,0 +1,24 @@
+
+.image-container{
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    height: 200px;
+}
+.image-container img{
+    width: 100%;
+    margin: 5px auto;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+
+}
+.new-field-btn{
+    background-color: rgba(138, 211, 141, 0.46);
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    color: #274D40;
+
+}
+.new-field-btn:hover{
+    background-color: #adbf99;
+}

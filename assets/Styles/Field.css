@@ -1,0 +1,290 @@
+
+    /* Custom Styles for Glass Search Bar */
+.search-bar {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+.search-bar input {
+    width: 100%;
+    padding: 10px 15px;
+    padding-left: 40px; /* Space for the search icon */
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    background: rgb(255, 215, 0,0.3);
+    backdrop-filter: blur(10px);
+    color: #333;
+    font-size: 16px;
+    transition: background 0.3s ease;
+    background: linear-gradient(to bottom, #fcfcfdff 0%, #002379 200%);
+
+}
+.search-bar input::placeholder {
+    color: #3A3B3F;
+}
+.search-bar input:focus {
+    background: rgba(255, 255, 255, 0.3);
+}
+.search-bar i {
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #274D40;
+    font-size: 18px;
+}
+/* Glass Container Styles */
+.item-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px; /* Gap between cards */
+    max-width: 1100px;
+    width: 100%;
+    max-height: 600px; /* Adjust this height as needed */
+    overflow-y: auto;
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+
+/* Placeholder text when empty */
+.empty-message {
+    font-size: 1.2em;
+    color: #888;
+    margin-left: 120px;
+
+}
+.no-data-img{
+    opacity: 80%;
+}
+.no-data{
+    display: none;
+    margin: 0 auto;
+}
+.no-data img{
+    width: 80%;
+    height: 80%;
+}
+
+/* Card Styles */
+    .card-custom {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 15px;
+        overflow: hidden;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.18); /* Subtle border for glass effect */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Softer shadow for more depth */
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        color: #333; /* Darker text for readability */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-custom:hover {
+        transform: translateY(-5px); /* Lift on hover */
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+    }
+
+
+/* Image Slider */
+.slider {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    height: 200px;
+}
+
+.slider img {
+    width: 100%;
+    margin: 5px auto;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: none;
+}
+
+.slider img.active {
+    display: block;
+}
+
+.slider-buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.slider-button {
+    background-color: rgba(255, 216, 118, 0.25);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+    border-radius: 50%;
+}
+
+/* Card Content */
+.card-content {
+    padding: 20px;
+}
+
+.field-info {
+    margin: 10px 0;
+}
+
+.field-info h4 {
+    margin: 0;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #274D40;
+}
+
+.field-info p {
+    margin: 5px 0;
+    font-size: 1em;
+    color: green;
+}
+
+.view-more-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: auto; /* This pushes the button to the bottom */
+}
+
+.view-btn {
+    padding: 10px 20px;
+    /*   background-color: #adecc1;*/
+    background: linear-gradient(to bottom, #fcfcfdff 0%, #002379 200%);
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+}
+
+.view-btn:hover {
+    background-color: #8ad38d;
+}
+.add-filed{
+    width: 150px;
+    font-weight: bold;
+    background: linear-gradient(to bottom, #fcfcfdff 0%, #004d00 200%);
+    color: #274D40;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.add-filed:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    background-color: #8ad38d;
+
+}
+.add-btn-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+/* General Modal Styling */
+.modal-content {
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #fcfcfdff 0%, #004d00 300%);
+    /*background: linear-gradient(to bottom, #fcfcfdff 0%, #002379 200%);*/
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-footer {
+    border-top: none;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Image Gallery Styling */
+.image-gallery {
+    display: flex;
+    gap: 10px;
+}
+
+
+.field-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.add-filed i{
+    margin-right: 10px;
+}
+#updateBtn, #saveBtn, #deleteBtn {
+    margin-left: 10px;
+}
+.custom-modal-background ,.add-modal-custom{
+    background-color: #FAF5E6; /* Light gray, change as needed */
+    color: #333; /* Text color */
+    border-radius: 10px; /* Rounded corners for a modern look */
+    padding: 20px; /* Adds spacing */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+#fieldCode,#fieldName,#fieldSize,#crops,#staff,#fieldLocation,.glass-input,#location,#cropDetailForm input,#staffDetailForm input,#logDetailForm input,
+#logDetailForm select,#logDetailForm textarea,#addMonitoringLogForm select,#addMonitoringLogForm textarea ,#vehicleDetailForm input,#vehicleDetailForm textarea
+,#equipmentDetailForm input,#equipmentDetailForm textarea,#addEquipmentForm input,#addEquipmentForm textarea,#addEquipmentForm select{
+    background-color: whitesmoke;
+    backdrop-filter: blur(10px);
+}
+#fieldDetailModal label , #addFieldModal label , #cropDetailForm label, #staffDetailForm label,#logDetailForm label,#equipmentDetailForm label{
+    font-size: 18px;
+    font-weight: 120;
+    font-family: "Itim", cursive;
+}
+.btn-container button , .btn button {
+    background: linear-gradient(to bottom, #fcfcfdff 0%, #002379 200%);
+    width: 120px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.btn-container button:hover,.btn button:hover{
+    background-color: #f5b900;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+/* Styles for add modal effect and image preview */
+
+
+.img-preview {
+    max-width: 200px;
+    max-height: 200px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+/* Define the height of the map container */
+#map {
+    width: 100%;
+    height: 300px; /* Adjust this value to fit your modal */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+

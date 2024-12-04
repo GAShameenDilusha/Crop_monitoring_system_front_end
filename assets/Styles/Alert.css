@@ -1,0 +1,60 @@
+:root {
+    --success-bg: rgba(76, 175, 80, 0.8);  /* Green background for success */
+    --error-bg: rgba(244, 67, 54, 0.8);    /* Red background for error */
+    --text-color: #fff;                    /* Text color */
+}
+
+.alert-box {
+    position: fixed;
+    top: 30px;
+    left: 50%;                  /* Center the alert horizontally */
+    transform: translateX(-50%);
+    min-width: 400px;
+    padding: 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: var(--text-color);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    transition: all 0.4s ease;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1020;
+}
+
+.alert-box.hidden {
+    display: none;
+}
+
+.alert-box.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.alert-box.success {
+    background-color: var(--success-bg);
+}
+
+.alert-box.error {
+    background-color: var(--error-bg);
+}
+
+.alert-box .close-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    opacity: 0.7;
+}
+
+.alert-box .close-btn:hover {
+    opacity: 1;
+}

@@ -2,15 +2,1800 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Crop monitoring system</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/Styles/dashboard.css">
+    <link rel="stylesheet" href="assets/Styles/Field.css">
+    <link rel="stylesheet" href="assets/Styles/Crop.css">
+    <link rel="stylesheet" href="assets/Styles/Staff.css">
+    <link rel="stylesheet" href="assets/Styles/Logs.css">
+    <link rel="stylesheet" href="assets/Styles/Vehicle.css">
+    <link rel="stylesheet" href="assets/Styles/Profile.css">
+    <link rel="stylesheet" href="assets/Styles/styles.css">
+    <link rel="stylesheet" href="assets/Styles/Alert.css">
 
+
+
+    <style>
+        body{
+            padding-top: 25px;
+            background-image: url('assets/img/background.jpg');
+            height: 100vh;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            backdrop-filter: blur(6px); overflow: auto;
+        }
+
+        #user_p_div{
+            margin-bottom: 10px;
+        }
+
+    </style>
+    <title>Green shadow</title>
 </head>
+
+
 <body>
+<section id="login-section">
+
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="login-card card shadow-lg">
+            <div class="row no-gutters">
+                <div class="col-md-6 logo-section d-flex flex-column justify-content-center align-items-center">
+                    <div>
+                        <img src="assets/img/Green-logo%202.png" alt="Green Shadow Logo" class="logo-img">
+                    </div>
+                   <!-- <div class="hand-image-container">
+                        <img src="assets/images/depositphotos_7151451-stock-photo-plant-in-hands-removebg-preview.png" alt="Hand with Plant" class="hand-img">
+                    </div>-->
+                </div>
+                <div class="col-md-6 p-4">
+                    <h3 class="text-center mb-4 welcome">Welcome Back!</h3>
+                    <form>
+                        <div class="form-group position-relative form-group-custom">
+                            <span class="input-icon"><i class="fas fa-user"></i></span>
+                            <input id="login-email" type="text" class="form-control userName" placeholder="Email" required>
+                        </div>
+                        <div class="form-group position-relative form-group-custom">
+                            <span class="input-icon"><i class="fas fa-lock "></i></span>
+                            <input id="login-password" type="password" class="form-control password" placeholder="Password" required>
+                        </div>
+                        <div class="text-right">
+                            <a href="#" class="forgot-password">Forgot password?</a>
+                        </div>
+                        <div class="d-flex justify-content-between mt-4">
+                            <button id="login-signIn" type="button" class="btn btn-success">Sign In</button>
+                            <button id="login-signUp" type="button" class="btn btn-warning">Sign Up</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="signUp-section">
+    <div class="container d-flex justify-content-center align-items-center min-vh-100 custom-container">
+        <div class="login-card card shadow-lg">
+            <div class="row no-gutters">
+                <div class="col-md-6 p-4">
+                    <!--<div class="company-name">
+                        Green Shadow PVT Ltd.
+                    </div>-->
+                    <h3 class="text-center mb-4 welcome">Create a account!</h3>
+                    <form>
+
+                        <div class="form-group position-relative form-group-custom">
+                            <span class="input-icon"><i class="fas fa-envelope"></i></span>
+                            <input id="signUp-email" type="email" class="form-control userName" placeholder="Email" required>
+                        </div>
+                        <div class="form-group position-relative form-group-custom">
+                            <span class="input-icon"><i class="fas fa-lock"></i></span>
+                            <input id="signUp-password" type="password" class="form-control password " placeholder="Password" required>
+                        </div>
+                        <div class="form-group form-group-custom ">
+                            <label><span class="input-icon"><i class="fas fa-briefcase"></i></span></label>
+                            <select id="SelectRole" class="form-control role" required>
+                                <option value="">Choose Your role...</option>
+                                <option value="ADMINISTRATOR">Admin</option>
+                                <option value="MANAGER">Manager</option>
+                                <option value="SCIENTIST">Scientist</option>
+                                <option value="OTHER">Other</option>
+                            </select>
+                        </div>
+                        <div class="d-flex justify-content-between mt-4">
+                            <button id="signInBtn" type="button" class="btn btn-warning">Sign In</button>
+                            <button id="signUpBtn" type="button" class="btn btn-success">Sign Up</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 logo-section d-flex flex-column justify-content-center align-items-center">
+                    <div>
+                        <img src="assets/img/Green-logo%202.png" alt="Green Shadow Logo" class="logo-img">
+                    </div>
+                    <!--<div class="hand-image-container">
+                        <img src="assets/images/depositphotos_7151451-stock-photo-plant-in-hands-removebg-preview.png" alt="Hand with Plant" class="hand-img">
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="homeSection" >
+    <header>
+        <!-- Top Navbar for mobile view -->
+        <div class="top-navbar d-md-none d-flex justify-content-between align-items-center">
+  <span class="menu-toggle">
+            <i class="fas fa-bars fa-lg"></i>
+            <i class="fa-solid fa-bell"></i>
+            <i class="fa-solid fa-user"></i>
+
+  </span>
+            <img src="assets/img/Green-logo%202.png" alt="Green Shadow Logo" class="img-fluid" style="height: 40px;">
+        </div>
+
+        <!-- Sidebar -->
+        <nav class="sidebar  border-right d-md-block d-none">
+            <div class="sidebar-header p-3">
+                <img src="assets/img/Green-logo%202.png" alt="Green Shadow Logo" class="img-fluid">
+            </div>
+            <ul class="list-unstyled p-2">
+                <li><span id="nav-dashboard"><i class="fas fa-tachometer-alt"></i> Home</span></li>
+                <li><span id="nav-field"><i class="fas fa-leaf"></i> Field Management</span></li>
+                <li><span id="nav-crop"><i class="fas fa-seedling"></i> Crops Management</span></li>
+                <li><span id="nav-staff"><i class="fas fa-users"></i> Staff</span></li>
+                <li><span id="nav-logs"><i class="fas fa-book-open"></i> Monitoring Logs</span></li>
+                <li><span id="nav-vehicles"><i class="fas fa-truck"></i> Vehicles</span></li>
+                <li><span id="nav-equipment"><i class="fas fa-tools"></i> Equipment</span></li>
+                <li><span id="nav-log-out"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</span></li>
+            </ul>
+        </nav>
+        <!-- Top Navbar -->
+        <nav class="navbar navbar-light bg-light mb-4 custom-nav">
+            <span class="navbar-brand dashboard-topic">Home</span>
+            <div class="profile-icon">
+                <i class="fa-solid fa-bell"></i>
+                <span id="nav-profile"> <i class="fa-solid fa-user"></i></span>
+
+
+            </div>
+        </nav>
+    </header>
+
+    <!--dashboard section -->
+    <section id="dashboard-section" class="main-content">
+        <!-- Content -->
+        <div class="">
+
+            <div class="col-xl-3" id="date">
+                <div class="form-group">
+                    <label>Date</label>
+                    <label class="font-weight-bold" style="font-size: 1.5rem" id="lbl-order-date"></label>
+                </div>
+            </div>
+
+            <div class="col-xl-3" id="time">
+                <div class="form-group" >
+                    <label>Time</label>
+                    <label class="font-weight-bold" style="font-size: 1.5rem" id="lbl-order-time"></label>
+                </div>
+            </div>
+
+            <!-- Dashboard Cards -->
+            <div class="row dashboard-cards">
+                <div class="col-md-3">
+                    <div class="card glass-card text-white mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Crops</h5>
+                            <p class="card-text">20</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card glass-card text-white mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Staff</h5>
+                            <p class="card-text">18 Active</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card glass-card text-white mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Tasks Completed</h5>
+                            <p class="card-text">145</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card glass-card text-white mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Alerts</h5>
+                            <p class="card-text">3 New</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Charts -->
+            <div class="row chart-cards">
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Crop Growth</h5>
+                            <div class="chart-container">
+                                <canvas id="growthChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Yield Analytics</h5>
+                            <div class="chart-container">
+                                <canvas id="yieldChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!--Field section -->
+    <section id="field-section">
+        <div class="main-content">
+
+            <!--  Search Bar -->
+            <div class="search-bar mb-4">
+                <i class="fas fa-search "></i>
+                <input type="text" placeholder="Search fields by location...">
+            </div>
+            <!--container of fields-->
+            <div id="field-container" class="item-container container ">
+                <!-- Placeholder message when no fields are available -->
+                <div class="no-data">
+                    <img src="assets/images/noData.png" class="no-data-img">
+                    <p class="empty-message">No fields available to display</p>
+                </div>
+
+                <!-- Card -->
+
+
+            </div>
+            <div class="add-btn-container">
+                <button id="add-field" type="button" class="btn add-filed" data-toggle="modal" data-target="#addFieldModal">  <i class="fas fa-plus-circle"></i>Add Field</button>
+            </div>
+        </div>
+
+        <!-- Modal Structure for view more/update/delete -->
+        <div class="modal fade" id="fieldDetailModal" tabindex="-1" aria-labelledby="fieldDetailModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content custom-modal-background">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="fieldDetailModalLabel" style="font-weight: bolder">Field Details</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Form for Field Details -->
+                        <form id="fieldDetailForm">
+                            <!-- Field Code (Non-editable) -->
+                            <div class="form-group">
+                                <label for="fieldCode">Field Code</label>
+                                <input type="text" class="form-control" id="fieldCode" value="F001" readonly>
+                            </div>
+
+                            <!-- Field Name -->
+                            <div class="form-group">
+                                <label for="fieldName">Field Name</label>
+                                <input type="text" class="form-control" id="fieldName" value="Field A" readonly>
+                            </div>
+
+                            <!-- Field Location -->
+                            <div class="form-group">
+                                <label for="fieldLocation">Field Location (Coordinates)</label>
+                                <input type="text" class="form-control" id="fieldLocation" value="35.6895° N, 139.6917° E" readonly>
+                            </div>
+
+                            <!-- Field Extent Size -->
+                            <div class="form-group">
+                                <label for="fieldSize">Extent Size (Sq. meters)</label>
+                                <input type="text" class="form-control" id="fieldSize" value="1500" readonly>
+                            </div>
+
+                            <!-- Crops (Dropdown) -->
+                            <div class="form-group">
+                                <label for="crops">Crops</label>
+                                <select id="crops" class="form-control" disabled>
+                                    <option>Wheat</option>
+                                    <option>Rice</option>
+                                    <option>Corn</option>
+                                </select>
+                            </div>
+
+                            <!-- Staff (Dropdown) -->
+                            <div class="form-group">
+                                <label for="field-staff">Staff</label>
+                                <select id="field-staff" class="form-control" disabled>
+                                    <option>John Doe</option>
+                                    <option>Jane Smith</option>
+                                    <option>Bob Brown</option>
+                                </select>
+                            </div>
+
+                            <!-- Field Images -->
+                            <div class="form-group">
+                                <label>Field Images</label>
+                                <div class="image-gallery">
+                                    <img src="https://via.placeholder.com/150" alt="Field Image 1" class="field-image">
+                                    <img src="https://via.placeholder.com/150" alt="Field Image 2" class="field-image">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer btn-container">
+                        <button type="button" class="btn " data-dismiss="modal">
+                            <i class="fas fa-times-circle"></i> Close
+                        </button>
+                        <button  type="button" class="btn " id="FieldUpdateBtn" >
+                            <i class="fas fa-edit"></i> Update
+                        </button>
+                        <button type="button" class="btn " id="FieldDeleteBtn">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </button>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Field Modal -->
+        <div class="modal fade" id="addFieldModal" tabindex="-1" role="dialog" aria-labelledby="addFieldModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+                <div class="modal-content add-modal-custom">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="addFieldModalLabel" style="font-weight: bolder">Add New Field</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="addFieldForm">
+                            <div class="form-group">
+                                <label for="Code">Field Code</label>
+                                <input type="text" class="form-control glass-input" id="Code" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Name">Field Name</label>
+                                <input type="text" class="form-control glass-input" id="Name" required>
+                            </div>
+                            <!-- Map Section -->
+                            <div class="form-group">
+                                <label for="fieldLocation">Select Location</label>
+                                <div id="map" style="height: 300px; border-radius: 8px; margin-bottom: 15px;"></div>
+                                <input type="text" class="form-control" id="location" placeholder="Location" readonly>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="Size">Extent Size (Sq. m)</label>
+                                <input type="number" class="form-control glass-input" id="Size" required>
+                            </div>
+
+                            <!-- Image Uploads with Previews -->
+                            <div class="image-container d-flex justify-content-between">
+                                <div class="form-group">
+                                    <label for="fieldImage1" class="custom-file-upload">
+                                        <i class="fas fa-upload"></i> Image 1
+                                    </label>
+                                    <input type="file" class="form-control-file" id="fieldImage1" onchange="previewImage(event, 'preview1')">
+                                    <img id="preview1" class="img-preview mt-3" src="" alt="Image Preview" style="display:none; ">
+                                </div>
+                                <div class="form-group">
+                                    <label for="fieldImage2" class="custom-file-upload">
+                                        <i class="fas fa-upload"></i> Image 2
+                                    </label>
+                                    <input type="file" class="form-control-file" id="fieldImage2" onchange="previewImage(event, 'preview2')">
+                                    <img id="preview2" class="img-preview mt-3" src="" alt="Image Preview" style="display:none; ">
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer btn">
+                        <button type="button" class="btn " data-dismiss="modal">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                        <button id="addField" type="button" class="btn ">
+                            <i class="fas fa-plus"></i> Add Field
+                        </button>
+                        <button type="button" class="btn " id="FieldSaveBtn" style="display: none;">
+                            <i class="fas fa-save"></i> Save Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Crop section -->
+    <section id="crop-section">
+        <div class="main-content">
+            <!--  Search Bar -->
+            <div class="search-bar mb-4">
+                <i class="fas fa-search "></i>
+                <input type="text" placeholder="Search Crops by Field name...">
+            </div>
+            <!--container of fields-->
+            <div id="crop-container" class="container item-container">
+                <!-- Placeholder message when no fields are available -->
+                <div class="no-data">
+                    <img src="assets/images/noData.png" class="no-data-img">
+                    <p class="empty-message">No Crops available to display</p>
+                </div>
+
+                <!-- Card -->
+                <div class="card-custom">
+                    <!-- Crop Image -->
+                    <div class="image-container ">
+                        <img src="https://via.placeholder.com/600x200?text=Image" alt="Crop Image">
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="card-content">
+
+
+                        <!-- Common Name -->
+                        <div class="field-info">
+                            <h4>Common Name</h4>
+                            <p>Tomato</p> <!-- Replace 'Tomato' with the actual common name -->
+                        </div>
+
+                        <!-- Special name -->
+                        <div class="field-info">
+                            <h4>Special name</h4>
+                            <p>Tomato</p> <!-- Replace 'C001' with the actual crop ID -->
+                        </div>
+
+                        <!-- Category -->
+                        <div class="field-info">
+                            <h4>Category</h4>
+                            <p>Vegetable</p> <!-- Replace 'Vegetable' with the actual category -->
+                        </div>
+
+                        <!-- Field -->
+                        <div class="field-info">
+                            <h4>Field</h4>
+                            <p>Field A</p> <!-- Replace 'Field A' with the actual field name or ID -->
+                        </div>
+
+                        <!-- Centered View More Button -->
+                        <div class="view-more-container">
+                            <button type="button" class="btn view-btn" data-toggle="modal" data-target="#cropDetailModal">View more</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-custom">
+                    <!-- Crop Image -->
+                    <div class="image-container ">
+                        <img src="https://via.placeholder.com/600x200?text=Image" alt="Crop Image">
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="card-content">
+
+
+                        <!-- Common Name -->
+                        <div class="field-info">
+                            <h4>Common Name</h4>
+                            <p>Tomato</p> <!-- Replace 'Tomato' with the actual common name -->
+                        </div>
+
+                        <!-- Special name -->
+                        <div class="field-info">
+                            <h4>Special name</h4>
+                            <p>Tomato</p> <!-- Replace 'C001' with the actual crop ID -->
+                        </div>
+
+                        <!-- Category -->
+                        <div class="field-info">
+                            <h4>Category</h4>
+                            <p>Vegetable</p> <!-- Replace 'Vegetable' with the actual category -->
+                        </div>
+
+                        <!-- Field -->
+                        <div class="field-info">
+                            <h4>Field</h4>
+                            <p>Field A</p> <!-- Replace 'Field A' with the actual field name or ID -->
+                        </div>
+
+                        <!-- Centered View More Button -->
+                        <div class="view-more-container">
+                            <button type="button" class="btn view-btn" data-toggle="modal" data-target="#fieldDetailModal">View more</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="add-btn-container">
+                <button id="openAddModal" type="button" class="btn add-filed" data-toggle="modal" data-target="#addCropModal">  <i class="fas fa-plus-circle"></i>Add Crop</button>
+            </div>
+        </div>
+
+        <!-- Modal Structure for View More/Update/Delete Crop -->
+        <div class="modal fade" id="cropDetailModal" tabindex="-1" aria-labelledby="cropDetailModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content custom-modal-background">
+                    <!-- Modal Header with Crop Image at the Top -->
+                    <div class="modal-header">
+                        <img src="https://via.placeholder.com/600x200?text=Crop+Image" alt="Crop Image" class="img-fluid" style="width: 80%; border-bottom: 1px solid #ddd; margin: 0 auto ;border-radius:20px">
+                    </div>
+
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="cropDetailModalLabel" style="font-weight: bolder">Crop Details</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <!-- Form for Crop Details -->
+                        <form id="cropDetailForm">
+                            <!-- Crop ID (Non-editable) -->
+                            <div class="form-group">
+                                <label for="cropId">Crop ID</label>
+                                <input type="text" class="form-control" id="cropId" value="C001" readonly>
+                            </div>
+
+                            <!-- Special Name -->
+                            <div class="form-group">
+                                <label for="specialName">Special Name</label>
+                                <input type="text" class="form-control" id="specialName" value="Organic Tomato" readonly>
+                            </div>
+
+                            <!-- Common Name -->
+                            <div class="form-group">
+                                <label for="commonName">Common Name</label>
+                                <input type="text" class="form-control" id="commonName" value="Tomato" readonly>
+                            </div>
+
+                            <!-- Category -->
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <input type="text" class="form-control" id="category" value="Vegetable" readonly>
+                            </div>
+
+                            <!-- Field -->
+                            <div class="form-group">
+                                <label for="field">Field</label>
+                                <input type="text" class="form-control" id="field" value="Field A" readonly>
+                            </div>
+
+                            <!-- Season -->
+                            <div class="form-group">
+                                <label for="season">Season</label>
+                                <input type="text" class="form-control" id="season" value="Spring" readonly>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Modal Footer with Action Buttons -->
+                    <div class="modal-footer btn-container">
+                        <button type="button" class="btn" data-dismiss="modal">
+                            <i class="fas fa-times-circle"></i> Close
+                        </button>
+                        <button type="button" class="btn" id="CropUpdateBtn" onclick="toggleEditCropMode()">
+                            <i class="fas fa-edit"></i> Update
+                        </button>
+                        <button type="button" class="btn" id="CropDeleteBtn">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Crop Modal -->
+        <div class="modal fade" id="addCropModal" tabindex="-1" role="dialog" aria-labelledby="addCropModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+                <div class="modal-content add-modal-custom">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="addCropModalLabel" style="font-weight: bolder">Add New Crop</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="addCropForm">
+                            <!-- Crop ID -->
+                            <div class="form-group">
+                                <label for="Id">Crop ID</label>
+                                <input type="text" class="form-control glass-input" id="Id" required>
+                            </div>
+
+                            <!-- Special Name -->
+                            <div class="form-group">
+                                <label for="CropSpecialName">Special Name</label>
+                                <input type="text" class="form-control glass-input" id="CropSpecialName" required>
+                            </div>
+
+                            <!-- Common Name -->
+                            <div class="form-group">
+                                <label for="CropCommonName">Common Name</label>
+                                <input type="text" class="form-control glass-input" id="CropCommonName" required>
+                            </div>
+
+                            <!-- Category -->
+                            <div class="form-group">
+                                <label for="CropCategory">Category</label>
+                                <input type="text" class="form-control glass-input" id="CropCategory" required>
+                            </div>
+
+                            <!-- Field (Dropdown with Add New Field Button) -->
+                            <div class="form-group ">
+                                <label for="fieldSelect" >Field</label>
+                                <div class="d-flex align-items-center">
+                                    <select id="fieldSelect" class="form-control glass-input " required>
+                                        <option value="">Select Field</option>
+                                        <option value="Field A">Field A</option>
+                                        <option value="Field B">Field B</option>
+                                        <!-- Add more fields dynamically -->
+                                    </select>
+                                    <button type="button" class="btn  ml-3 new-field-btn" data-toggle="modal" data-target="#addFieldModal">
+                                        Add Field
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <!-- Season -->
+                            <div class="form-group">
+                                <label for="CropSeason">Season</label>
+                                <input type="text" class="form-control glass-input" id="CropSeason" required>
+                            </div>
+
+                            <!-- Image Upload with Preview -->
+                            <div class="form-group">
+                                <label for="cropImage" class="custom-file-upload">
+                                    <i class="fas fa-upload"></i> Upload Crop Image
+                                </label>
+                                <input type="file" class="form-control-file" id="cropImage" onchange="previewCropImage(event, 'cropPreview')">
+                                <img id="cropPreview" class="img-preview mt-3" src="" alt="Image Preview" style="display:none;">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer btn">
+                        <button type="button" class="btn" data-dismiss="modal">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                        <button id="addCrop" type="button" class="btn" >
+                            <i class="fas fa-plus"></i> Add Crop
+                        </button>
+                        <button type="button" class="btn" id="CropSaveBtn" style="display: none;" >
+                            <i class="fas fa-save"></i> Save Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Staff section -->
+    <section id="staff-section">
+        <div class="main-content">
+
+            <!--  Search Bar -->
+            <div class="search-bar mb-4">
+                <i class="fas fa-search "></i>
+                <input id="staffSearch" type="text" placeholder="Search Staff members ...">
+            </div>
+            <!--container of fields-->
+            <div class="container item-container">
+                <!-- Placeholder message when no fields are available -->
+                <div class="no-data">
+                    <img src="assets/images/noData.png" class="no-data-img">
+                    <p class="empty-message">No Crops available to display</p>
+                </div>
+                <div class="staff-table-container mb-4">
+                    <table class="table staff-table">
+                        <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Gender</th>
+                            <th>Join Date</th>
+                            <th>Email</th>
+                            <th>Contact Number</th>
+                            <th>Designation</th>
+                            <th>Role</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Sample row, repeat or generate with data dynamically as needed -->
+                        </tr>
+                        <!-- Add more rows as necessary -->
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+            </div>
+            <div class="add-btn-container">
+                <button id="staffSave" type="button" class="btn add-filed" style="width: 250px">  <i class="fas fa-plus-circle"></i>Add Staff Member</button>
+            </div>
+        </div>
+
+
+        <!-- Staff Details Modal -->
+        <div class="modal fade" id="staffDetailModal" tabindex="-1" aria-labelledby="staffDetailModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content custom-modal-background">
+                    <!-- Modal Header with Staff Name and Icon -->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="staffDetailModalLabel">
+                            <i class="fas fa-user" style="margin-right: 8px; color: #274D40"></i>
+                            <span id="staffName">Staff Member Name</span>
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <!-- Form for Staff Details -->
+                        <form id="staffDetailForm">
+                            <!-- Staff Id -->
+                            <div class="form-group">
+                                <label for="sId">Staff Id</label>
+                                <input type="text" class="form-control" id="sId" value="Staff-001" readonly>
+                            </div>
+                            <!-- First Name -->
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" class="form-control" id="firstName" value="John" readonly>
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" value="Doe" readonly>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" value="johndoe@example.com" readonly>
+                            </div>
+                            <!-- gender -->
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <input type="text" class="form-control" id="gender" value="Male" readonly>
+                            </div>
+                            <!-- Contact Number -->
+                            <div class="form-group">
+                                <label for="contact">Contact Number</label>
+                                <input type="text" class="form-control" id="contact" value="123-456-7890" readonly>
+                            </div>
+                            <!-- address -->
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" class="form-control" id="address" value="123-456-7890" readonly>
+                            </div>
+
+                            <!-- Date of Birth -->
+                            <div class="form-group">
+                                <label for="dob">Date of Birth</label>
+                                <input type="text" class="form-control" id="dob" value="1990-01-01" readonly>
+                            </div>
+
+                            <!-- Role -->
+                            <div class="form-group">
+                                <label for="role">Role</label>
+                                <input type="text" class="form-control" id="role" value="Manager" readonly>
+                            </div>
+
+                            <!-- Designation -->
+                            <div class="form-group">
+                                <label for="designation">Designation</label>
+                                <input type="text" class="form-control" id="designation" value="Team Leader" readonly>
+                            </div>
+
+                            <!-- Date of Birth -->
+                            <div class="form-group">
+                                <label for="joinDate">Date of Joined</label>
+                                <input type="text" class="form-control" id="joinDate" value="1990-01-01" readonly>
+                            </div>
+
+                            <!-- Assigned Fields -->
+                            <div class="form-group">
+                                <label for="assignedFields">Assigned Fields</label>
+                                <input type="text" class="form-control" id="assignedFields" value="Field A, Field B" readonly>
+                            </div>
+
+                            <!-- Assigned Vehicles -->
+                            <div class="form-group">
+                                <label for="assignedVehicles">Assigned Vehicles</label>
+                                <input type="text" class="form-control" id="assignedVehicles" value="Vehicle X" readonly>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Modal Footer with Action Buttons -->
+                    <div class="modal-footer btn-container">
+                        <button type="button" class="btn" data-dismiss="modal">
+                            <i class="fas fa-times-circle"></i> Close
+                        </button>
+                        <button type="button" class="btn" id="staffUpdateBtn" onclick="toggleStaffEditMode()">
+                            <i class="fas fa-edit"></i> Update
+                        </button>
+                        <button type="button" class="btn" id="staffDeleteBtn">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Add New Staff Modal -->
+        <div class="modal fade" id="addStaffModal" tabindex="-1" role="dialog" aria-labelledby="addStaffModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+                <div class="modal-content add-modal-custom">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="addStaffModalLabel" style="font-weight: bold">Add New Staff</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form id="addStaffForm">
+                            <!-- Staff ID -->
+                            <div class="form-group">
+                                <label for="staffId">Staff ID</label>
+                                <input type="text" class="form-control glass-input" id="staffId" readonly>
+                            </div>
+
+                            <!-- First Name -->
+                            <div class="form-group">
+                                <label for="firstNameModal">First Name</label>
+                                <input type="text" class="form-control glass-input" id="firstNameModal" required>
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="form-group">
+                                <label for="lastNameModal">Last Name</label>
+                                <input type="text" class="form-control glass-input" id="lastNameModal" required>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label for="emailModal">Email</label>
+                                <input type="email" class="form-control glass-input" id="emailModal" required>
+                            </div>
+
+                            <!--  address -->
+                            <div class="form-group">
+                                <label for="addressModal">Address</label>
+                                <input type="text" class="form-control glass-input" id="addressModal" required>
+                            </div>
+
+                            <!-- Contact -->
+                            <div class="form-group">
+                                <label for="contactModal">Contact</label>
+                                <input type="text" class="form-control glass-input" id="contactModal" required>
+                            </div>
+
+                            <!-- Date of Birth -->
+                            <div class="form-group">
+                                <label for="dobModal">Date of Birth</label>
+                                <input type="date" class="form-control glass-input" id="dobModal" required>
+                            </div>
+                            <!-- Role (Combo Box) -->
+                            <div class="form-group">
+                                <label for="genderModal">Gender</label>
+                                <select id="genderModal" class="form-control glass-input" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+
+                                </select>
+                            </div>
+
+                            <!-- Role (Combo Box) -->
+                            <div class="form-group">
+                                <label for="role">Role</label>
+                                <select id="roleModal" class="form-control glass-input" required>
+                                    <option value="">Select Role</option>
+                                    <option value="MANAGER">Manager</option>
+                                    <option value="ADMINISTRATOR">Administrator</option>
+                                    <option value="SCIENTIST">Scientist</option>
+                                    <option value="OTHER">Other</option>
+                                    <!-- Add more roles as needed -->
+                                </select>
+                            </div>
+
+                            <!-- Designation -->
+                            <div class="form-group">
+                                <label for="designation">Designation</label>
+                                <input type="text" class="form-control glass-input" id="designationModal" required>
+                            </div>
+                            <!-- Date of Joined -->
+                            <div class="form-group">
+                                <label for="joinDateModal">Date of Joined</label>
+                                <input type="date" class="form-control glass-input" id="joinDateModal" required>
+                            </div>
+
+                            <!-- Assigned Fields with Dynamic Combo Boxes -->
+                            <div class="form-group">
+                                <label for="assignedFields">Assigned Fields</label>
+                                <div id="assignedFieldsContainer">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <select class="form-control glass-input mr-2 fieldForStaff" name="assignedFields[]" required>
+                                            <option value="">Select Field</option>
+                                            <option value="Field A">Field A</option>
+                                            <option value="Field B">Field B</option>
+                                            <!-- Add more fields dynamically if needed -->
+                                        </select>
+                                        <button type="button" class="btn btn-sm custom-btn" onclick="removeField(this)"><i class="fa-regular fa-trash-can" style="color:green"></i></button>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-sm custom-btn mt-2" onclick="addField()" style="color: #274D40">+ Add Field</button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!-- Modal Footer with Clear Button -->
+                    <div class="modal-footer btn-container">
+                        <button type="button" class="btn " onclick="clearStaffForm()">
+                            <i class="fas fa-eraser"></i> Clear
+                        </button>
+                        <button type="button" class="btn" data-dismiss="modal">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                        <button id="addStaffBtn" type="button" class="btn ">
+                            <i class="fas fa-plus"></i> Add Staff
+                        </button>
+                        <button type="button" class="btn" id="saveBtn" style="display: none;" >
+                            <i class="fas fa-save"></i> Save Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Logs section -->
+    <section id="logs-section">
+        <div class="main-content">
+
+            <div class="date-picker d-flex align-items-center search-bar">
+                <i class="fas fa-search "></i>
+                <input id="lDate" type="date" class="form-control" placeholder="Search by date">
+                <!-- Show All Button -->
+                <button id="showAllButton" class="btn custom-btn ml-3" style="display: none">
+                    Show All
+                </button>
+            </div>
+
+            <!--container of fields-->
+            <div class="container item-container log-container">
+                <!-- Placeholder message when no fields are available -->
+                <div class="no-data">
+                    <img src="assets/images/noData.png" class="no-data-img">
+                    <p class="empty-message">No Crops available to display</p>
+                </div>
+                <div class="log-card-container">
+
+                </div>
+
+
+            </div>
+            <div class="add-btn-container">
+                <button id="openAddLogModal" type="button" class="btn add-filed"  style="width: 250px">  <i class="fas fa-plus-circle"></i>Add New Log</button>
+            </div>
+        </div>
+
+        <div class="modal fade" id="logDetailModal" tabindex="-1" aria-labelledby="logDetailModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content custom-modal-background">
+                    <!-- Modal Header with Optional Log Image at the Top -->
+                    <div class="modal-header log-image-container">
+                        <img src="https://via.placeholder.com/600x200?text=Log+Image" alt="Log Image" class="img-fluid" style="width: 100%; border-bottom: 1px solid #ddd;">
+                    </div>
+
+                    <!-- Modal Header with Title -->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="logDetailModalLabel" style="font-weight: bolder">Log Details</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <!-- Modal Body with Log Details -->
+                    <div class="modal-body">
+                        <!-- Form for Log Details -->
+                        <form id="logDetailForm">
+                            <!-- Log Code (Non-editable) -->
+                            <div class="form-group">
+                                <label for="logCode">Log Code</label>
+                                <input type="text" class="form-control" id="logCode" value="LOG123" readonly>
+                            </div>
+
+                            <!-- Log Date -->
+                            <div class="form-group">
+                                <label for="logDate">Log Date</label>
+                                <input type="text" class="form-control" id="logDate" value="2024-11-02" readonly>
+                            </div>
+
+                            <!-- Details -->
+                            <div class="form-group">
+                                <label for="details">Details</label>
+                                <textarea class="form-control" id="details" rows="3" readonly>Sudden drop in soil moisture detected. Immediate action required.</textarea>
+                            </div>
+
+                            <!-- Fields/Crops -->
+                            <div class="form-group">
+                                <label for="fields">Fields/Crops</label>
+                                <input type="text" class="form-control" id="fields" value="Field A, Field B" readonly>
+
+
+                            </div>
+
+                            <!-- Staff Members -->
+                            <div class="form-group">
+                                <label for="staffMembers">Staff Members</label>
+                                <input type="text" class="form-control" id="staffMembers" value="John Doe, Jane Smith" readonly>
+
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Modal Footer with Action Buttons -->
+                    <div class="modal-footer btn-container">
+                        <button type="button" class="btn" data-dismiss="modal">
+                            <i class="fas fa-times-circle"></i> Close
+                        </button>
+                        <button type="button" class="btn" id="logUpdateBtn" onclick="enableEditMode()">
+                            <i class="fas fa-edit"></i> Update
+                        </button>
+                        <button type="button" class="btn" id="logDeleteBtn">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--  add log modal-->
+
+        <div class="modal fade" id="addMonitoringLogModal" tabindex="-1" aria-labelledby="addMonitoringLogModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content custom-modal-background">
+                    <!-- Modal Header -->
+                    <div class="modal-header d-flex justify-content-between align-items-center">
+                        <h4 class="modal-title" id="addMonitoringLogModalLabel">
+                            <i class="fas fa-notes-medical" style="margin-right: 8px; color: #274D40"></i> Add Monitoring Log
+                        </h4>
+                        <div class="text-right">
+                            <span id="currentDateTime" class="text-muted"></span> <!-- Real-time date and time display -->
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form id="addMonitoringLogForm">
+                            <!-- Description -->
+                            <div class="form-group">
+                                <label for="logDescription">Log Description</label>
+                                <textarea class="form-control" id="logDescription" rows="3" placeholder="Enter log details..."></textarea>
+                            </div>
+
+                            <!-- Fields Combo Box with Dynamic Add/Remove -->
+                            <div class="form-group">
+                                <label for="filed-log">Fields</label>
+                                <div id="fieldsContainer">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <select id="filed-log" class="form-control mr-2 fieldForLog" name="fields[]" >
+                                            <option value="">Select Field</option>
+                                            <option value="Field A">Field A</option>
+                                            <option value="Field B">Field B</option>
+                                            <!-- Add more options dynamically as needed -->
+                                        </select>
+                                        <button type="button" class="btn btn-sm custom-btn" onclick="removeFieldCrop(this)">
+                                            <i class="fa-regular fa-trash-can"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-sm custom-btn mt-2" onclick="addFieldToLog()">
+                                    + Add Field
+                                </button>
+                            </div>
+                            <div class="form-group">
+                                <label for="crop-log">Crops</label>
+                                <div id="cropsContainer">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <select id="crop-log" class="form-control mr-2 cropForLog" name="Crops[]" >
+                                            <option value="">Select Crop</option>
+                                            <option value="Field A">Crop A</option>
+                                            <option value="Field B">Crop B</option>
+                                            <!-- Add more options dynamically as needed -->
+                                        </select>
+                                        <button type="button" class="btn btn-sm custom-btn" onclick="removeFieldCrop(this)">
+                                            <i class="fa-regular fa-trash-can"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-sm custom-btn mt-2" onclick="addCropToLog()">
+                                    + Add Crop
+                                </button>
+                            </div>
+
+                            <!-- Staff Combo Box with Dynamic Add/Remove -->
+                            <div class="form-group">
+                                <label for="monitoringStaff">Staff Monitoring</label>
+                                <div id="staffContainer">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <select id="monitoringStaff" class="form-control mr-2 staffForLog" name="monitoringStaff[]" >
+                                            <option value="">Select Staff Member</option>
+                                            <option value="John Doe">John Doe</option>
+                                            <option value="Jane Smith">Jane Smith</option>
+                                            <!-- Add more options dynamically as needed -->
+                                        </select>
+                                        <button type="button" class="btn btn-sm custom-btn" onclick="removeStaff(this)">
+                                            <i class="fa-regular fa-trash-can"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-sm custom-btn mt-2" onclick="addStaffForLog()">
+                                    + Add Staff
+                                </button>
+                            </div>
+
+                            <!-- Status Dropdown -->
+                            <div class="form-group">
+                                <label for="logStatus">Status</label>
+                                <select class="form-control" id="logStatus">
+                                    <option value="">Select status</option>
+                                    <option value="Complete">Complete</option>
+                                    <option value="Inprogress">In progress</option>
+                                    <option value="Pending">Pending</option>
+                                </select>
+                            </div>
+
+                            <!-- Image Upload -->
+                            <!-- Image Upload with Preview -->
+                            <div class="form-group">
+                                <label for="logImage" class="custom-file-upload">
+                                    <i class="fas fa-upload"></i> Upload a Image
+                                </label>
+                                <input type="file" class="form-control-file" id="logImage" onchange="previewLogImage(event, 'logPreview')">
+                                <img id="logPreview" class="img-preview mt-3" src="" alt="Image Preview" style="display:none;">
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Modal Footer -->
+                    <div class="modal-footer btn-container">
+                        <button type="button" class="btn " data-dismiss="modal"><i class="fas fa-eraser"></i>Close</button>
+                        <button type="button" class="btn " id="saveLogBtn"><i class="fas fa-plus"></i>Save Log</button>
+                        <button type="button" class="btn " id="logSaveBtn" style="display: none;">
+                            <i class="fas fa-save"></i> Save Changes
+                        </button>
+                        <button type="button" class="btn " onclick="clearForm()">
+                            <i class="fas fa-eraser"></i> Clear
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Vehicle section -->
+    <section id="vehicle-section">
+        <div class="main-content">
+
+            <!--  Search Bar -->
+            <div class="search-bar mb-4">
+                <i class="fas fa-search "></i>
+                <input id="vehicleSearch" type="text" placeholder=" Search by License Plate or Fuel Type...">
+            </div>
+            <!--container of fields-->
+            <div class="container item-container">
+                <!-- Placeholder message when no fields are available -->
+                <div class="no-data">
+                    <img src="assets/images/noData.png" class="no-data-img">
+                    <p class="empty-message">No Vehicles available to display</p>
+                </div>
+                <div class="vehicle-container">
+                    <div class="vehicle-filter-container">
+                        <label for="statusFilter" class="filter-label">Filter by Status:</label>
+                        <select id="statusFilter" class="filter-select">
+                            <option value="all">All</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+
+                    <div class="vehicle-table-wrapper">
+                        <table class="table vehicle-table">
+                            <thead>
+                            <tr>
+                                <th>Vehicle Category</th>
+                                <th>License Plate</th>
+                                <th>Fuel Type</th>
+                                <th>Status</th>
+                                <th>Remarks</th>
+                            </tr>
+                            </thead>
+                            <tbody id="vehicleTableBody">
+
+                            <!-- More rows as necessary -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
 
 
 
 
+            </div>
+            <div class="add-btn-container">
+                <button id="addVehicle" type="button" class="btn add-filed" data-toggle="modal" data-target="#addVehicleModal" style="width: 250px">  <i class="fas fa-plus-circle"></i>Add New Vehicle</button>
+            </div>
+        </div>
+        <!-- Vehicle Details Modal -->
+        <div class="modal fade" id="vehicleDetailModal" tabindex="-1" aria-labelledby="vehicleDetailModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content custom-modal-background">
+                    <!-- Modal Header with Vehicle Icon and Title -->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="vehicleDetailModalLabel">
+                            <i class="fas fa-truck" style="margin-right: 8px; color: #274D40"></i>
+                            Vehicle Details
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <!-- Form for Vehicle Details -->
+                        <form id="vehicleDetailForm">
+                            <!-- Vehicle Code -->
+                            <div class="form-group">
+                                <label for="vehicleCode">Vehicle Code</label>
+                                <input type="text" class="form-control" id="vehicleCode" value="V123" readonly>
+                            </div>
+
+                            <!-- License Plate -->
+                            <div class="form-group">
+                                <label for="licensePlate">License Plate</label>
+                                <input type="text" class="form-control" id="licensePlate" value="ABC-1234" readonly>
+                            </div>
+
+                            <!-- Fuel Type -->
+                            <div class="form-group">
+                                <label for="fuelType">Fuel Type</label>
+                                <input type="text" class="form-control" id="fuelType" value="Diesel" readonly>
+                            </div>
+
+                            <!-- Status -->
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <input type="text" class="form-control" id="status" value="Active" readonly>
+                            </div>
+
+                            <!-- Allocated Staff -->
+                            <div class="form-group">
+                                <label for="allocatedStaff">Allocated Staff</label>
+                                <input type="text" class="form-control" id="allocatedStaff" value="John Doe, Jane Smith" readonly>
+                            </div>
+
+                            <!-- Remarks -->
+                            <div class="form-group">
+                                <label for="remarks">Remarks</label>
+                                <textarea class="form-control" id="remarks" rows="3" readonly>Vehicle requires maintenance next month.</textarea>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Modal Footer with Action Buttons -->
+                    <div class="modal-footer btn-container">
+                        <button type="button" class="btn" data-dismiss="modal">
+                            <i class="fas fa-times-circle"></i> Close
+                        </button>
+                        <button type="button" class="btn" id="updateVehicleBtn" onclick="toggleVehicleEditMode()">
+                            <i class="fas fa-edit"></i> Update
+                        </button>
+                        <button type="button" class="btn" id="deleteVehicleBtn">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Vehicle Modal -->
+        <div class="modal fade" id="addVehicleModal" tabindex="-1" role="dialog" aria-labelledby="addVehicleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+                <div class="modal-content add-modal-custom">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="addVehicleModalLabel" style="font-weight: bold">Add New Vehicle</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form id="addVehicleForm">
+
+
+                            <!-- License Plate -->
+                            <div class="form-group">
+                                <label for="licensePlateModal">License Plate</label>
+                                <input type="text" class="form-control glass-input" id="licensePlateModal" required>
+                            </div>
+                            <!-- Category -->
+                            <div class="form-group">
+                                <label for="categoryModal">Category</label>
+                                <input type="text" class="form-control glass-input" id="categoryModal" required>
+                            </div>
+
+                            <!-- Fuel Type (Combo Box) -->
+                            <div class="form-group">
+                                <label for="fuelTypeModal">Fuel Type</label>
+                                <select id="fuelTypeModal" class="form-control glass-input" required>
+                                    <option value="">Select Fuel Type</option>
+                                    <option value="Petrol">Petrol</option>
+                                    <option value="Diesel">Diesel</option>
+                                    <option value="Electric">Electric</option>
+                                    <!-- Add more fuel types as needed -->
+                                </select>
+                            </div>
+
+                            <!-- Status -->
+                            <div class="form-group">
+                                <label for="statusModal">Status</label>
+                                <select id="statusModal" class="form-control glass-input" required>
+                                    <option value="">Select  Status</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
+
+                                </select>
+
+                            </div>
+
+                            <!-- Assigned Staff with Dynamic Combo Boxes -->
+                            <div class="form-group">
+                                <label for="assignedStaff">Assigned Staff</label>
+                                <div id="assignedStaffContainer">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <select id="assignedStaff" class="form-control glass-input mr-2 staffForVehicle" name="assignedStaff[]" required>
+                                            <option value="">Select Staff</option>
+                                            <option value="Staff Member 1">Staff Member 1</option>
+                                            <option value="Staff Member 2">Staff Member 2</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Remarks -->
+                            <div class="form-group">
+                                <label for="remarksModal">Remarks</label>
+                                <textarea class="form-control glass-input" id="remarksModal" rows="3"></textarea>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Modal Footer with Clear Button -->
+                    <div class="modal-footer btn-container">
+                        <button type="button" class="btn" onclick="clearVehicleForm()">
+                            <i class="fas fa-eraser"></i> Clear
+                        </button>
+                        <button type="button" class="btn" data-dismiss="modal">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                        <button id="addVehicleBtn" type="button" class="btn">
+                            <i class="fas fa-plus"></i> Add Vehicle
+                        </button>
+                        <button type="button" class="btn " id="vehicleSaveBtn" style="display: none;">
+                            <i class="fas fa-save"></i> Save Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Equipment section -->
+    <section id="equipment-section">
+        <div class="main-content">
+
+            <!--  Search Bar -->
+
+            <div class="search-bar mb-4">
+                <i class="fas fa-search"></i>
+                <input id="equipmentSearch" type="text" placeholder="Search by Name or Type...">
+            </div>
+
+            <!--container of fields-->
+            <div class="container item-container">
+                <!-- Placeholder message when no fields are available -->
+                <div class="no-data">
+                    <img src="assets/images/noData.png" class="no-data-img">
+                    <p class="empty-message">No Equipment available to display</p>
+                </div>
+                <div class="equipment-container">
+                    <div class="equipment-filter-container">
+                        <label for="equipmentStatusFilter" class="filter-label">Filter by Status:</label>
+                        <select id="equipmentStatusFilter" class="filter-select">
+                            <option value="all">All</option>
+                            <option value="available">Available</option>
+                            <option value="Inuse">In Use</option>
+                            <option value="maintenance">Maintenance</option>
+                        </select>
+                    </div>
+
+                    <div class="equipment-table-wrapper">
+                        <table class="table equipment-table">
+                            <thead>
+                            <tr>
+
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Assigned Staff</th>
+                                <th>Assigned Field</th>
+                            </tr>
+                            </thead>
+                            <tbody id="equipmentTableBody">
+                            <!-- More rows as necessary -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+            <div class="add-btn-container">
+                <button id="addNewEquipment" type="button" class="btn add-filed" data-toggle="modal" data-target="#addEquipmentModal" style="width: 250px">  <i class="fas fa-plus-circle"></i>Add New Equipment</button>
+            </div>
+        </div>
+
+        <!-- Equipment Details Modal -->
+        <div class="modal fade" id="equipmentDetailModal" tabindex="-1" aria-labelledby="equipmentDetailModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content custom-modal-background">
+                    <!-- Modal Header with Equipment Icon and Title -->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="equipmentDetailModalLabel">
+                            <i class="fas fa-tools" style="margin-right: 8px; color: #274D40"></i>
+                            Equipment Details
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <!-- Form for Equipment Details -->
+                        <form id="equipmentDetailForm">
+                            <!-- Equipment ID -->
+                            <div class="form-group">
+                                <label for="equipmentId">Equipment ID</label>
+                                <input type="text" class="form-control" id="equipmentId" value="E001" readonly>
+                            </div>
+
+                            <!-- Name -->
+                            <div class="form-group">
+                                <label for="equipmentName">Name</label>
+                                <input type="text" class="form-control" id="equipmentName" value="Tractor" readonly>
+                            </div>
+
+                            <!-- Type -->
+                            <div class="form-group">
+                                <label for="equipmentType">Type</label>
+                                <input type="text" class="form-control" id="equipmentType" value="Heavy Machinery" readonly>
+                            </div>
+
+                            <!-- Status -->
+                            <div class="form-group">
+                                <label for="equipmentStatus">Status</label>
+                                <input type="text" class="form-control" id="equipmentStatus" value="Available" readonly>
+                            </div>
+
+                            <!-- Assigned Staff -->
+                            <div class="form-group">
+                                <label for="assignedStaff">Assigned Staff</label>
+                                <input type="text" class="form-control" id="EqAssignedStaff" value="John Doe" readonly>
+                            </div>
+
+                            <!-- Assigned Field -->
+                            <div class="form-group">
+                                <label for="assignedField">Assigned Field</label>
+                                <input type="text" class="form-control" id="assignedField" value="Field A" readonly>
+                            </div>
+
+                            <!-- Remarks -->
+                            <div class="form-group">
+                                <label for="equipmentRemarks">Remarks</label>
+                                <textarea class="form-control" id="equipmentRemarks" rows="3" readonly>Regular maintenance scheduled.</textarea>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Modal Footer with Action Buttons -->
+                    <div class="modal-footer btn-container">
+                        <button type="button" class="btn" data-dismiss="modal">
+                            <i class="fas fa-times-circle"></i> Close
+                        </button>
+                        <button type="button" class="btn" id="updateEquipmentBtn" onclick="toggleEquipmentEditMode()">
+                            <i class="fas fa-edit"></i> Update
+                        </button>
+                        <button type="button" class="btn" id="deleteEquipmentBtn">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Equipment Modal -->
+        <div class="modal fade" id="addEquipmentModal" tabindex="-1" aria-labelledby="addEquipmentModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content custom-modal-background">
+                    <!-- Modal Header with Equipment Icon and Title -->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="addEquipmentModalLabel">
+                            <i class="fas fa-plus-circle" style="margin-right: 8px; color: #274D40"></i>
+                            Add Equipment
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <!-- Form for Adding Equipment -->
+                        <form id="addEquipmentForm">
+
+
+                            <!-- Name -->
+                            <div class="form-group">
+                                <label for="newEquipmentName">Name</label>
+                                <input type="text" class="form-control" id="newEquipmentName" placeholder="Enter Equipment Name">
+                            </div>
+
+                            <!-- Type -->
+                            <div class="form-group">
+                                <label for="newEquipmentType">Type</label>
+                                <select id="newEquipmentType" class="form-control">
+                                    <option value="">Select Type</option>
+                                    <option value="Heavy Machinery">Heavy Machinery</option>
+                                    <option value="Hand Tool">Hand Tool</option>
+                                    <option value="Electrical Equipment">Electrical Equipment</option>
+                                    <!-- Add more options as necessary -->
+                                </select>
+                            </div>
+
+                            <!-- Status -->
+                            <div class="form-group">
+                                <label for="newEquipmentStatus">Status</label>
+                                <select id="newEquipmentStatus" class="form-control">
+                                    <option value="">Select Status</option>
+                                    <option value="Available">Available</option>
+                                    <option value="Inuse">InUse</option>
+                                    <option value="maintenance">maintenance</option>
+                                </select>
+                            </div>
+
+                            <!-- Assigned Staff (Combo Box) -->
+                            <div class="form-group">
+                                <label for="newAssignedStaff">Assigned Staff</label>
+                                <select id="newAssignedStaff" class="form-control">
+                                    <option value="">Select Staff</option>
+                                    <option value="John Doe">John Doe</option>
+                                    <option value="Jane Smith">Jane Smith</option>
+                                    <!-- Add options dynamically as needed -->
+                                </select>
+                            </div>
+
+                            <!-- Assigned Field (Combo Box) -->
+                            <div class="form-group">
+                                <label for="newAssignedField">Assigned Field</label>
+                                <select id="newAssignedField" class="form-control">
+                                    <option value="">Select Field</option>
+                                    <option value="Field A">Field A</option>
+                                    <option value="Field B">Field B</option>
+                                    <!-- Add options dynamically as needed -->
+                                </select>
+                            </div>
+
+                            <!-- Remarks -->
+                            <div class="form-group">
+                                <label for="newEquipmentRemarks">Remarks</label>
+                                <textarea class="form-control" id="newEquipmentRemarks" rows="3" placeholder="Enter any remarks or additional notes"></textarea>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Modal Footer with Action Buttons -->
+                    <div class="modal-footer btn-container">
+                        <button type="button" class="btn" data-dismiss="modal">
+                            <i class="fas fa-times-circle"></i> Cancel
+                        </button>
+                        <button type="button" class="btn " id="saveEquipmentBtn">
+                            <i class="fas fa-save"></i> Save Equipment
+                        </button>
+                        <button type="button" class="btn " id="equipSaveBtn" style="display: none;">
+                            <i class="fas fa-save"></i> Save Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Profile section -->
+    <section id="profile-section">
+        <div class="main-content">
+
+            <div class="profile-container">
+                <div class="profile-header">
+                    <h3>My Profile</h3>
+
+                </div>
+
+                <div class="profile-fields">
+                    <!-- Staff ID (Read-only) -->
+                    <div class="profile-field">
+                        <label for="UserId">Staff ID:</label>
+                        <input type="text" id="UserId" value="S12345" readonly>
+                    </div>
+
+                    <!-- First Name -->
+                    <div class="profile-field">
+                        <label for="userFirstName">First Name:</label>
+                        <input type="text" id="userFirstName" value="John" readonly>
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="profile-field">
+                        <label for="userLastName">Last Name:</label>
+                        <input type="text" id="userLastName" value="Doe" readonly>
+                    </div>
+
+                    <!-- Designation -->
+                    <div class="profile-field">
+                        <label for="userDesignation">Designation:</label>
+                        <input type="text" id="userDesignation" value="Manager" readonly>
+                    </div>
+
+
+                    <!-- Date of Birth -->
+                    <div class="profile-field">
+                        <label for="UserDob">Date of Birth:</label>
+                        <input type="date" id="UserDob" value="1990-01-01" readonly>
+                    </div>
+
+                    <!-- Joined Date -->
+                    <div class="profile-field">
+                        <label for="joinedDate">Joined Date:</label>
+                        <input type="date" id="joinedDate" value="2020-06-15" readonly>
+                    </div>
+
+                    <!-- Contact Number -->
+                    <div class="profile-field">
+                        <label for="contactNo">Contact No.:</label>
+                        <input type="text" id="contactNo" value="+1 234 567 890" readonly>
+                    </div>
+                    <!-- Gender -->
+                    <div class="profile-field">
+                        <label for="profileGender">Gender</label>
+                        <select id="profileGender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="profile-field">
+                        <label for="userEmail">Email:</label>
+                        <input type="email" id="userEmail" value="john.doe@example.com" readonly>
+                    </div>
+
+                    <!-- Role -->
+                    <div class="profile-field">
+                        <label for="UserRole">Role:</label>
+                        <input type="email" id="UserRole" value="MANAGER" readonly>
+                    </div>
+
+                    <!-- Address Lines -->
+                    <div class="profile-field">
+                        <label for="addressLine1">Address Line 1:</label>
+                        <input type="text" id="addressLine1" value="123 Main St" readonly>
+                    </div>
+                    <div class="profile-field">
+                        <label for="addressLine2">Address Line 2:</label>
+                        <input type="text" id="addressLine2" value="Apt 101" readonly>
+                    </div>
+                    <div class="profile-field">
+                        <label for="addressLine3">Address Line 3:</label>
+                        <input type="text" id="addressLine3" value="Springfield" readonly>
+                    </div>
+                    <div class="profile-field">
+                        <label for="addressLine4">Address Line 4:</label>
+                        <input type="text" id="addressLine4" value="IL, 62701" readonly>
+                    </div>
+                </div>
+
+                <div class="profile-actions">
+                    <button id="saveChangesBtn" class="save-btn custom-btn" onclick="  updateProfile()" style="display:none;">Save Changes</button>
+                    <button id="deleteAccountBtn" class="delete-btn custom-btn " onclick="deleteAccount()">Delete Account</button>
+                    <button id="editProfileBtn" class="edit-btn custom-btn" onclick="toggleProfileEditMode()">Edit Profile</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+</section>
+
+<!--alert-->
+<div id="alertBox" class="alert-box hidden">
+    <span id="alertMessage">Your alert message here</span>
+    <button onclick="closeAlert()" class="close-btn">&times;</button>
+</div>
+
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.js"></script>
+
+<!-- jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<!-- Script Links -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="Js/dashboard.js"></script>
+<script src="Js/Field.js"></script>
+<script src="Js/Crop.js"></script>
+<script src="Js/Staff.js"></script>
+<script src="Js/Logs.js"></script>
+<script src="Js/Vehicle.js"></script>
+<script src="Js/Equipment.js"></script>
+<script src="Js/Profile.js"></script>
+<script src="Js/Script.js"></script>
+<script src="Js/Alert.js"></script>
 
 
 </body>

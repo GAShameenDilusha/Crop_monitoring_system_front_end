@@ -1,0 +1,91 @@
+
+    /* Container for the table */
+.staff-table-container ,.vehicle-container{
+    overflow-x: auto;
+    padding: 1rem;
+}
+
+/* Glass-look table styling */
+.staff-table,.vehicle-table,.equipment-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.2); /* Light glass effect */
+    backdrop-filter: blur(10px); /* Blurring effect */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Table headers */
+.staff-table th ,.vehicle-table th,.equipment-table th{
+    padding: 12px;
+    text-align: left;
+    background: linear-gradient(to bottom, #fcfcfdff 20%, #002379 500%);
+    color: green;
+    font-weight: bold;
+}
+
+/* Table data */
+.staff-table td ,.vehicle-table td,.equipment-table td{
+    padding: 12px;
+    color: #274D40;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Table rows hover effect */
+.staff-table tbody tr:hover,.vehicle-table tbody tr:hover,.equipment-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.3); /* Slightly darker on hover */
+    cursor: pointer;
+}
+
+
+
+table tbody tr {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+/* Hover effect */
+table tbody tr:hover {
+    transform: scale(1.02); /* Increase scale on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add box shadow on hover */
+    background-color: rgba(255, 255, 255, 0.8); /* light background color on hover */
+}
+/* Modal Background */
+.modal-backdrop {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px); /* Blurred background for a modern effect */
+}
+.custom-btn {
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Border with slight transparency */
+    backdrop-filter: blur(10px); /* Adds blur effect */
+    color: green; /* White text color */
+    padding: 10px 20px; /* Padding for the button */
+    border-radius: 10px; /* Rounded corners */
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+.custom-btn:hover {
+    background: rgba(255, 255, 255, 0.4); /* Slightly lighter on hover */
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Slightly larger shadow */
+}
+
+
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .staff-table th, .staff-table td {
+        padding: 10px;
+    }
+    .search-bar{
+        margin: 60px auto;
+    }
+}
+
